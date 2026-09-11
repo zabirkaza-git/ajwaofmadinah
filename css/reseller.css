@@ -290,9 +290,9 @@
 
 .reseller-hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 50px;
-  align-items: center;
+  grid-template-columns: 1.24fr 0.76fr;
+  gap: 48px;
+  align-items: start;
 }
 
 .hero-pill-badge {
@@ -314,12 +314,30 @@
 
 .hero-reseller-h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 5.2vw, 4.4rem);
-  font-weight: 900;
-  line-height: 1.08;
+  font-size: clamp(2rem, 3.2vw, 2.95rem);
+  font-weight: 800;
+  line-height: 1.25;
   color: var(--text-pure);
   margin-bottom: 24px;
   letter-spacing: -0.01em;
+}
+
+.hero-reseller-h1 .gold-shimmer {
+  background: linear-gradient(135deg, #FFF09E 0%, #F5C518 35%, #D4AF37 70%, #F3CE65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  font-weight: 800;
+  padding-bottom: 6px;
+  margin-bottom: -6px;
+  filter: drop-shadow(0 2px 14px rgba(212, 175, 55, 0.28));
+}
+
+.hero-visual {
+  position: relative;
+  align-self: start;
+  margin-top: 10px;
 }
 
 .hero-reseller-sub {
