@@ -1,18 +1,103 @@
 /* ============================================================
-   AJWA OF MADINAH — Reseller Edition Stylesheet
-   Companion CSS extending style.css for the Reseller Funnel
+   AJWA OF MADINAH — Pakej Usahawan Edition Stylesheet
+   Companion CSS extending style.css for the Usahawan Funnel
    Irfan Khairi Sdn Bhd © 2026
    ============================================================ */
 
-/* ── FAQ Overrides for Reseller Page (longer answers) ──────── */
-.section-faq .faq-item.active .faq-answer {
-  max-height: 400px; /* Increase from 200px default for longer answers */
-  padding-bottom: 24px;
+/* ── Dark theme tokens & contrast overrides ── */
+:root {
+  /* Dark theme background tokens */
+  --bg-deep:          #07060a;
+  --bg-surface:       #0e0d11;
+  --bg-card:          #141217;
+  --bg-card-hover:    #1b191f;
+
+  /* Gold palette extended */
+  --gold-300:         #f5d76e;
+  --gold-400-r:       #d4af37;
+  --gold-500-r:       #b8962e;
+  --border-gold-light: rgba(212,175,55,.30);
+  --border-gold-solid: rgba(212,175,55,.60);
+
+  /* High contrast text tokens for dark theme */
+  --text-pure:        #ffffff;
+  --text-main:        rgba(255,255,255,.90);
+  --text-dark:        #ffffff;
+  --forest-900:       #ffffff;
+  --green-900:        #071e16;
+  --text-muted:       rgba(255,255,255,.78);
+  --text-muted-dark:  rgba(255,255,255,.78);
+  --text-subtle:      rgba(255,255,255,.55);
+  --text-body:        rgba(255,255,255,.88);
+
+  /* Shadows */
+  --shadow-subtle:    0 4px 24px rgba(0,0,0,.5);
+  --shadow-gold:      0 0 40px rgba(212,175,55,.15);
 }
 
-/* ── Section FAQ base styles if not covered by #soalan ──────── */
+/* Dark body background */
+body {
+  background: var(--bg-deep);
+  color: var(--text-main);
+}
+
+/* Typography contrast guarantees across all sections */
+.section-title {
+  color: #ffffff !important;
+}
+
+.section-desc {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+.section-tag {
+  color: #FBE49D !important;
+}
+
+/* High readability for all paragraph text */
+body .hero-reseller-sub,
+body .why-desc,
+body .problem-desc,
+body .package-item-text p,
+body .section-desc,
+body .profit-stat-footnote,
+body .calc-header p,
+body .benefit-desc,
+body .bonus-item-desc,
+body .step-desc,
+body .faq-answer p,
+body .footer-about-text,
+body .profit-stat-label,
+body .package-pricing-label,
+body .package-price-sub,
+body .guarantee-item {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+/* FAQ readability */
+#soalan,
+#soalan.section-faq,
 .section-faq {
-  background: var(--bg-surface);
+  background: var(--bg-surface) !important;
+}
+
+.section-faq .faq-item {
+  background: rgba(20, 18, 23, 0.8) !important;
+  border: 1px solid rgba(212, 175, 55, 0.22) !important;
+}
+
+.section-faq .faq-question {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.section-faq .faq-question:hover {
+  color: #FBE49D !important;
+}
+
+.section-faq .faq-item.active .faq-answer {
+  max-height: 400px;
+  padding-bottom: 24px;
 }
 
 /* ── Hero Button Glow Pulse Effect ─────────────────────────── */
@@ -34,15 +119,17 @@
 /* ── Reseller Hero Pack Image ───────────────────────────────── */
 .reseller-hero-pack-img {
   width: 100%;
-  max-height: 400px;
+  max-width: 440px;
+  max-height: 420px;
   object-fit: contain;
   margin: 0 auto;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.85));
-  transition: transform 0.5s ease;
+  display: block;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
+  transition: transform 0.4s ease;
 }
 
 .hero-visual-card:hover .reseller-hero-pack-img {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-8px) scale(1.02);
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -55,29 +142,34 @@
   right: 0;
   padding: 0;
   z-index: 1000;
-  background: rgba(6, 6, 6, 0.88);
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  background: rgba(6, 6, 6, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
   transition: var(--transition);
 }
 
 #navbar.navbar-reseller.scrolled {
-  background: rgba(6, 6, 6, 0.96);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  height: auto !important;
+  min-height: auto !important;
+  background: rgba(6, 6, 6, 0.98);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
 }
 
 /* Announcement Bar: Clean High-Contrast Dark Luxury with Bright Gold Accents */
 #navbar.navbar-reseller .top-announcement-bar {
   background: #090805;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
   color: #FFFFFF;
   text-align: center;
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
-  padding: 9px 16px;
+  padding: 8px 16px;
   letter-spacing: 0.02em;
   position: static;
   width: 100%;
@@ -140,25 +232,31 @@
 }
 
 #navbar.navbar-reseller .nav-inner {
-  padding: 12px 0;
+  height: auto !important;
+  min-height: 56px;
+  padding: 8px 0 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Dual logos with clear gap to nav links - identical presence to index.html */
+/* Dual logos with clear gap to nav links */
 #navbar.navbar-reseller .nav-logos {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-right: 32px;
+  gap: 14px;
+  margin-right: 28px;
   flex-shrink: 0;
 }
 
+/* Logos neatly sized and vertically contained inside navbar */
 #navbar.navbar-reseller .nav-logo-ajwa {
-  height: 82px;
+  height: 38px;
+  max-height: 38px;
   width: auto;
   object-fit: contain;
+  border-radius: 6px;
+  display: block;
   transition: transform 0.3s ease;
 }
 
@@ -167,18 +265,21 @@
 }
 
 #navbar.navbar-reseller .nav-logo-sep {
-  height: 52px;
+  height: 24px;
   width: 1px;
-  background: linear-gradient(180deg, transparent, var(--gold-500), transparent);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 #navbar.navbar-reseller .nav-logo-iksb {
-  height: 68px;
+  height: 30px;
+  max-height: 30px;
   width: auto;
   object-fit: contain;
+  opacity: 0.9;
+  display: block;
 }
 
-/* Nav links - exact font family, size, color and hover behavior as index.html */
+/* Nav links - clean high contrast */
 #navbar.navbar-reseller .nav-links {
   display: flex;
   align-items: center;
@@ -194,9 +295,9 @@
 
 #navbar.navbar-reseller .nav-links a:not(.btn-gold-nav) {
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.90rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   white-space: nowrap;
   letter-spacing: normal;
   padding: 6px 2px;
@@ -205,7 +306,7 @@
 }
 
 #navbar.navbar-reseller .nav-links a:not(.btn-gold-nav):hover {
-  color: var(--gold-300);
+  color: #FBE49D;
 }
 
 #navbar.navbar-reseller .nav-links a:not(.btn-gold-nav)::after {
@@ -231,7 +332,7 @@
   justify-content: center;
 }
 
-/* CTA button: exact luxury gold button matching index.html */
+/* CTA button: luxury gold button */
 #navbar.navbar-reseller .btn-gold-nav,
 #navbar.navbar-reseller .nav-links .btn-gold-nav,
 #nav-reseller-btn {
@@ -280,10 +381,10 @@
 }
 
 /* ── Reseller Hero Specifics ───────────────────────────────── */
-/* Generous padding-top to clear the integrated navbar header */
 .hero-reseller {
-  padding-top: 185px;
-  padding-bottom: 90px;
+  background: linear-gradient(160deg, #082d22 0%, #051e16 50%, #03120d 100%);
+  padding-top: 155px;
+  padding-bottom: 85px;
   position: relative;
   overflow: hidden;
 }
@@ -292,33 +393,33 @@
   display: grid;
   grid-template-columns: 1.24fr 0.76fr;
   gap: 48px;
-  align-items: start;
+  align-items: center;
 }
 
 .hero-pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid var(--border-gold-light);
-  padding: 8px 20px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 8px 18px;
   border-radius: 100px;
   font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--gold-400);
-  letter-spacing: 0.15em;
+  color: #FBE49D;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .hero-reseller-h1 {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 3.2vw, 2.95rem);
   font-weight: 800;
-  line-height: 1.25;
-  color: var(--text-pure);
-  margin-bottom: 24px;
+  line-height: 1.22;
+  color: #FFFFFF !important;
+  margin-bottom: 22px;
   letter-spacing: -0.01em;
 }
 
@@ -336,21 +437,23 @@
 
 .hero-visual {
   position: relative;
-  align-self: start;
-  margin-top: 10px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-reseller-sub {
   font-family: var(--font-body);
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-  margin-bottom: 34px;
+  font-size: 1.12rem;
+  color: rgba(255, 255, 255, 0.88) !important;
+  line-height: 1.75;
+  margin-bottom: 30px;
   max-width: 620px;
 }
 
 .hero-reseller-sub strong {
-  color: var(--gold-400);
+  color: #FBE49D !important;
   font-weight: 700;
 }
 
@@ -361,37 +464,44 @@
   margin-bottom: 34px;
 }
 
+/* Hero package tags — crisp, clear text & bright gold */
 .hero-package-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #111111;
-  border: 1px solid var(--border-gold-subtle);
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  color: var(--text-main);
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #FFFFFF !important;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .hero-package-tag strong {
-  color: var(--gold-300);
+  color: #FBE49D !important;
+  font-weight: 700;
 }
 
+/* Hero visual card — COMPLETELY REMOVE BOX (transparent, no border, no shadow) */
 .hero-visual-card {
   position: relative;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, rgba(20, 20, 20, 0.9) 70%);
-  border: 1px solid var(--border-gold-light);
-  border-radius: var(--radius-xl);
-  padding: 30px;
-  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.8);
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 10px 0 !important;
+  box-shadow: none !important;
   text-align: center;
+  width: 100%;
 }
 
 .hero-visual-card img {
-  max-height: 380px;
+  max-height: 420px;
   margin: 0 auto;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.9));
-  transition: transform 0.5s ease;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
+  transition: transform 0.4s ease;
 }
 
 .hero-visual-card:hover img {
@@ -400,52 +510,58 @@
 
 .floating-badge {
   position: absolute;
-  background: rgba(14, 14, 14, 0.92);
+  background: rgba(10, 10, 10, 0.94);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--border-gold-light);
-  border-radius: var(--radius-md);
-  padding: 12px 18px;
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 12px;
+  padding: 10px 16px;
   text-align: left;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   z-index: 2;
   animation: floatSlow 4s ease-in-out infinite alternate;
 }
 
 .floating-badge-top-left {
-  top: -15px;
-  left: -20px;
+  top: 10px;
+  left: -10px;
 }
 
 .floating-badge-bottom-right {
-  bottom: -20px;
-  right: -15px;
+  bottom: 10px;
+  right: -10px;
   animation-delay: -2s;
 }
 
 .floating-badge-label {
   font-size: 0.72rem;
+  font-weight: 600;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.82);
+  color: #E2E8F0 !important;
   letter-spacing: 0.05em;
   display: block;
+  margin-bottom: 2px;
 }
 
 .floating-badge-val {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--gold-300);
+  color: #FBE49D !important;
   font-family: var(--font-heading);
 }
 
 @keyframes floatSlow {
   0% { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
+  100% { transform: translateY(-8px); }
 }
 
 /* ── Problem Section (Masalah Reseller) ─────────────────────── */
+#masalah,
+#masalah.section-problem,
 .section-problem {
-  padding: 90px 0;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #0c0a06 50%, var(--bg-deep) 100%);
+  padding: 90px 0 !important;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, #0c0a06 50%, var(--bg-deep) 100%) !important;
+  color: var(--text-main) !important;
   position: relative;
 }
 
@@ -594,9 +710,11 @@
 }
 
 /* ── What Reseller Gets (Apa Reseller Dapat) ─────────────────── */
+#pakej,
+#pakej.section-package,
 .section-package {
-  padding: 90px 0;
-  background: linear-gradient(180deg, #090909 0%, #121008 100%);
+  padding: 90px 0 !important;
+  background: linear-gradient(180deg, #090909 0%, #121008 100%) !important;
   position: relative;
 }
 
@@ -913,8 +1031,11 @@
 }
 
 /* ── Marketing Bonus Showcase (Bonus PERCUMA) ──────────────── */
+#bonus,
+#bonus.section-bonus,
 .section-bonus {
-  padding: 95px 0;
+  padding: 95px 0 !important;
+  background: var(--bg-surface) !important;
   position: relative;
 }
 
