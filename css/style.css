@@ -734,6 +734,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .pakej-reseller-note { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: 20px; }
 .pakej-reseller-note h4 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--white); }
 .pakej-reseller-note p { font-size: .88rem; color: rgba(255,255,255,.60); line-height: 1.65; }
+.pakej-usahawan-hero { margin-top: 56px; }
 
 /* ============================================================
    PELUANG RESELLER (#peluang-reseller)
