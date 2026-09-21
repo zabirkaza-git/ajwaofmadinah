@@ -1,103 +1,22 @@
 /* ============================================================
    AJWA OF MADINAH — Pakej Usahawan Edition Stylesheet
-   Companion CSS extending style.css for the Usahawan Funnel
+   Harmonized with index.html design system & color palette
+   Dark-Green / Cream / Gold Luxury Malaysian E-commerce Theme
    Irfan Khairi Sdn Bhd © 2026
    ============================================================ */
 
-/* ── Dark theme tokens & contrast overrides ── */
+/* ── Inherit & extend CSS Custom Properties from style.css ── */
 :root {
-  /* Dark theme background tokens */
-  --bg-deep:          #07060a;
-  --bg-surface:       #0e0d11;
-  --bg-card:          #141217;
-  --bg-card-hover:    #1b191f;
-
-  /* Gold palette extended */
-  --gold-300:         #f5d76e;
-  --gold-400-r:       #d4af37;
-  --gold-500-r:       #b8962e;
-  --border-gold-light: rgba(212,175,55,.30);
-  --border-gold-solid: rgba(212,175,55,.60);
-
-  /* High contrast text tokens for dark theme */
-  --text-pure:        #ffffff;
-  --text-main:        rgba(255,255,255,.90);
-  --text-dark:        #ffffff;
-  --forest-900:       #ffffff;
-  --green-900:        #071e16;
-  --text-muted:       rgba(255,255,255,.78);
-  --text-muted-dark:  rgba(255,255,255,.78);
-  --text-subtle:      rgba(255,255,255,.55);
-  --text-body:        rgba(255,255,255,.88);
-
-  /* Shadows */
-  --shadow-subtle:    0 4px 24px rgba(0,0,0,.5);
-  --shadow-gold:      0 0 40px rgba(212,175,55,.15);
+  /* Extra tokens specific to the Usahawan Funnel */
+  --gold-gradient: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 100%);
+  --green-gradient: linear-gradient(160deg, var(--green-800) 0%, var(--green-700) 50%, var(--green-900) 100%);
+  --shadow-emerald: 0 16px 48px rgba(4, 27, 20, 0.22);
 }
 
-/* Dark body background */
+/* ── Base body inherits cream from style.css ────────────────── */
 body {
-  background: var(--bg-deep);
-  color: var(--text-main);
-}
-
-/* Typography contrast guarantees across all sections */
-.section-title {
-  color: #ffffff !important;
-}
-
-.section-desc {
-  color: rgba(255, 255, 255, 0.80) !important;
-}
-
-.section-tag {
-  color: #FBE49D !important;
-}
-
-/* High readability for all paragraph text */
-body .hero-reseller-sub,
-body .why-desc,
-body .problem-desc,
-body .package-item-text p,
-body .section-desc,
-body .profit-stat-footnote,
-body .calc-header p,
-body .benefit-desc,
-body .bonus-item-desc,
-body .step-desc,
-body .faq-answer p,
-body .footer-about-text,
-body .profit-stat-label,
-body .package-pricing-label,
-body .package-price-sub,
-body .guarantee-item {
-  color: rgba(255, 255, 255, 0.82) !important;
-}
-
-/* FAQ readability */
-#soalan,
-#soalan.section-faq,
-.section-faq {
-  background: var(--bg-surface) !important;
-}
-
-.section-faq .faq-item {
-  background: rgba(20, 18, 23, 0.8) !important;
-  border: 1px solid rgba(212, 175, 55, 0.22) !important;
-}
-
-.section-faq .faq-question {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.section-faq .faq-question:hover {
-  color: #FBE49D !important;
-}
-
-.section-faq .faq-item.active .faq-answer {
-  max-height: 400px;
-  padding-bottom: 24px;
+  background: var(--cream-200);
+  color: var(--text-body);
 }
 
 /* ── Hero Button Glow Pulse Effect ─────────────────────────── */
@@ -106,8 +25,8 @@ body .guarantee-item {
 }
 
 @keyframes heroGlowPulse {
-  0%, 100% { box-shadow: 0 8px 30px -4px rgba(212, 175, 55, 0.45); }
-  50% { box-shadow: 0 12px 40px -4px rgba(212, 175, 55, 0.75); }
+  0%, 100% { box-shadow: 0 8px 30px -4px rgba(201, 168, 76, 0.45); }
+  50% { box-shadow: 0 12px 40px -4px rgba(201, 168, 76, 0.75); }
 }
 
 /* ── Button Icon ────────────────────────────────────────────── */
@@ -116,24 +35,8 @@ body .guarantee-item {
   line-height: 1;
 }
 
-/* ── Reseller Hero Pack Image ───────────────────────────────── */
-.reseller-hero-pack-img {
-  width: 100%;
-  max-width: 440px;
-  max-height: 420px;
-  object-fit: contain;
-  margin: 0 auto;
-  display: block;
-  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
-  transition: transform 0.4s ease;
-}
-
-.hero-visual-card:hover .reseller-hero-pack-img {
-  transform: translateY(-8px) scale(1.02);
-}
-
 /* ════════════════════════════════════════════════════════════
-   RESELLER NAVBAR & TOP ANNOUNCEMENT
+   HEADER & NAVBAR (IDENTICAL LUXURY DARK GREEN TO index.html)
    ════════════════════════════════════════════════════════════ */
 #navbar.navbar-reseller {
   position: fixed;
@@ -145,28 +48,28 @@ body .guarantee-item {
   height: auto !important;
   min-height: auto !important;
   max-height: none !important;
-  background: rgba(6, 6, 6, 0.95);
+  background: rgba(4, 27, 20, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.22);
   transition: var(--transition);
 }
 
 #navbar.navbar-reseller.scrolled {
   height: auto !important;
   min-height: auto !important;
-  background: rgba(6, 6, 6, 0.98);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+  background: rgba(4, 27, 20, 0.98);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Announcement Bar: Clean High-Contrast Dark Luxury with Bright Gold Accents */
+/* Top Announcement Bar */
 #navbar.navbar-reseller .top-announcement-bar {
-  background: #090805;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-  color: #FFFFFF;
+  background: var(--green-900);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+  color: var(--white);
   text-align: center;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 0.86rem;
   font-weight: 500;
   padding: 8px 16px;
@@ -198,14 +101,14 @@ body .guarantee-item {
 }
 
 #navbar.navbar-reseller .top-announcement-bar strong {
-  color: #FBE49D;
+  color: var(--gold-light);
   font-weight: 800;
 }
 
 #navbar.navbar-reseller .badge-live {
-  background: rgba(212, 175, 55, 0.14);
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  color: #FBE49D;
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  color: var(--gold-light);
   font-size: 0.74rem;
   font-weight: 700;
   padding: 3px 10px;
@@ -249,7 +152,7 @@ body .guarantee-item {
   flex-shrink: 0;
 }
 
-/* Logos neatly sized and vertically contained inside navbar */
+/* Logos neatly contained inside navbar */
 #navbar.navbar-reseller .nav-logo-ajwa {
   height: 38px;
   max-height: 38px;
@@ -294,7 +197,7 @@ body .guarantee-item {
 }
 
 #navbar.navbar-reseller .nav-links a:not(.btn-gold-nav) {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 0.90rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.85);
@@ -306,7 +209,7 @@ body .guarantee-item {
 }
 
 #navbar.navbar-reseller .nav-links a:not(.btn-gold-nav):hover {
-  color: #FBE49D;
+  color: var(--gold-light);
 }
 
 #navbar.navbar-reseller .nav-links a:not(.btn-gold-nav)::after {
@@ -332,7 +235,7 @@ body .guarantee-item {
   justify-content: center;
 }
 
-/* CTA button: luxury gold button */
+/* CTA button: exact luxury gold button matching index.html */
 #navbar.navbar-reseller .btn-gold-nav,
 #navbar.navbar-reseller .nav-links .btn-gold-nav,
 #nav-reseller-btn {
@@ -344,43 +247,36 @@ body .guarantee-item {
   max-width: none !important;
   flex: 0 0 auto !important;
   text-align: center !important;
-  font-family: var(--font-body);
-  background: linear-gradient(135deg, var(--gold-400), var(--gold-500)) !important;
-  color: #0A0802 !important;
+  font-family: var(--font-sans);
+  background: var(--gold-400) !important;
+  color: var(--green-900) !important;
   font-weight: 700 !important;
   font-size: 0.88rem !important;
   padding: 10px 22px !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: 100px !important;
   transition: var(--transition) !important;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3) !important;
   white-space: nowrap !important;
   text-decoration: none !important;
 }
 
 #navbar.navbar-reseller .btn-gold-nav svg,
 #nav-reseller-btn svg {
-  stroke: #0A0802 !important;
+  stroke: var(--green-900) !important;
   flex-shrink: 0;
 }
 
 #navbar.navbar-reseller .btn-gold-nav:hover,
 #navbar.navbar-reseller .nav-links .btn-gold-nav:hover,
 #nav-reseller-btn:hover {
-  color: #000000 !important;
+  background: var(--gold-500) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.5) !important;
 }
 
-#navbar.navbar-reseller .btn-gold-nav:hover svg,
-#nav-reseller-btn:hover svg {
-  stroke: #000000 !important;
-}
-
-#navbar.navbar-reseller .btn-gold-nav:hover .btn-arrow {
-  transform: translateX(4px);
-}
-
-/* ── Reseller Hero Specifics ───────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   HERO SECTION (DARK EMERALD LUXURY IDENTICAL TO index.html)
+   ════════════════════════════════════════════════════════════ */
 .hero-reseller {
   background: linear-gradient(160deg, #082d22 0%, #051e16 50%, #03120d 100%);
   padding-top: 155px;
@@ -400,39 +296,31 @@ body .guarantee-item {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.45);
   padding: 8px 18px;
   border-radius: 100px;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 700;
-  color: #FBE49D;
+  color: var(--gold-light);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 22px;
 }
 
 .hero-reseller-h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.2vw, 2.95rem);
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-weight: 700;
   line-height: 1.22;
-  color: #FFFFFF !important;
+  color: var(--white) !important;
   margin-bottom: 22px;
   letter-spacing: -0.01em;
 }
 
 .hero-reseller-h1 .gold-shimmer {
-  background: linear-gradient(135deg, #FFF09E 0%, #F5C518 35%, #D4AF37 70%, #F3CE65 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-  font-weight: 800;
-  padding-bottom: 6px;
-  margin-bottom: -6px;
-  filter: drop-shadow(0 2px 14px rgba(212, 175, 55, 0.28));
+  color: var(--gold-400);
 }
 
 .hero-visual {
@@ -444,7 +332,7 @@ body .guarantee-item {
 }
 
 .hero-reseller-sub {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 1.12rem;
   color: rgba(255, 255, 255, 0.88) !important;
   line-height: 1.75;
@@ -453,7 +341,7 @@ body .guarantee-item {
 }
 
 .hero-reseller-sub strong {
-  color: #FBE49D !important;
+  color: var(--gold-light) !important;
   font-weight: 700;
 }
 
@@ -464,27 +352,27 @@ body .guarantee-item {
   margin-bottom: 34px;
 }
 
-/* Hero package tags — crisp, clear text & bright gold */
+/* Hero package tags — elegant emerald frosted pills */
 .hero-package-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(20, 20, 20, 0.85);
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(4, 27, 20, 0.7);
+  border: 1px solid rgba(201, 168, 76, 0.35);
   padding: 9px 16px;
   border-radius: 10px;
   font-size: 0.88rem;
-  color: #FFFFFF !important;
+  color: var(--white) !important;
   font-weight: 500;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .hero-package-tag strong {
-  color: #FBE49D !important;
+  color: var(--gold-light) !important;
   font-weight: 700;
 }
 
-/* Hero visual card — COMPLETELY REMOVE BOX (transparent, no border, no shadow) */
+/* Hero visual card — COMPLETELY REMOVE BOX (transparent, floating pack) */
 .hero-visual-card {
   position: relative;
   background: none !important;
@@ -497,9 +385,14 @@ body .guarantee-item {
   width: 100%;
 }
 
-.hero-visual-card img {
+.hero-visual-card img,
+.reseller-hero-pack-img {
+  width: 100%;
+  max-width: 440px;
   max-height: 420px;
+  object-fit: contain;
   margin: 0 auto;
+  display: block;
   filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
   transition: transform 0.4s ease;
 }
@@ -508,16 +401,17 @@ body .guarantee-item {
   transform: translateY(-8px) scale(1.02);
 }
 
+/* Floating profit badges on product image */
 .floating-badge {
   position: absolute;
-  background: rgba(10, 10, 10, 0.94);
+  background: rgba(4, 27, 20, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  border-radius: 12px;
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  border-radius: var(--radius-md);
   padding: 10px 16px;
   text-align: left;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-card);
   z-index: 2;
   animation: floatSlow 4s ease-in-out infinite alternate;
 }
@@ -537,7 +431,7 @@ body .guarantee-item {
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #E2E8F0 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   letter-spacing: 0.05em;
   display: block;
   margin-bottom: 2px;
@@ -546,8 +440,8 @@ body .guarantee-item {
 .floating-badge-val {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #FBE49D !important;
-  font-family: var(--font-heading);
+  color: var(--gold-light) !important;
+  font-family: var(--font-serif);
 }
 
 @keyframes floatSlow {
@@ -555,14 +449,29 @@ body .guarantee-item {
   100% { transform: translateY(-8px); }
 }
 
-/* ── Problem Section (Masalah Reseller) ─────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 1: MASALAH / CABARAN (CREAM THEME LIKE index.html)
+   ════════════════════════════════════════════════════════════ */
 #masalah,
 #masalah.section-problem,
 .section-problem {
   padding: 90px 0 !important;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #0c0a06 50%, var(--bg-deep) 100%) !important;
-  color: var(--text-main) !important;
+  background: var(--cream-200) !important;
+  color: var(--text-body) !important;
   position: relative;
+}
+
+#masalah .section-tag {
+  color: var(--gold-500) !important;
+}
+
+#masalah .section-title {
+  color: var(--text-dark) !important;
+  font-family: var(--font-serif);
+}
+
+#masalah .section-desc {
+  color: var(--text-muted) !important;
 }
 
 .problems-grid {
@@ -573,21 +482,22 @@ body .guarantee-item {
 }
 
 .problem-card {
-  background: rgba(22, 18, 14, 0.7);
-  border: 1px solid rgba(239, 68, 68, 0.25);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  background: var(--white) !important;
+  border: 1px solid var(--cream-300) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 32px 26px !important;
   position: relative;
-  transition: var(--transition);
+  transition: var(--transition) !important;
   display: flex;
   gap: 18px;
   align-items: flex-start;
+  box-shadow: var(--shadow-card) !important;
 }
 
 .problem-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(239, 68, 68, 0.45);
-  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.1);
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-card-hover) !important;
+  border-color: rgba(220, 38, 38, 0.3) !important;
 }
 
 .problem-icon-wrap {
@@ -595,59 +505,78 @@ body .guarantee-item {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  color: #f87171;
+  color: #dc2626;
 }
 
 .problem-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+  font-family: var(--font-serif);
+  color: var(--text-dark) !important;
   margin-bottom: 8px;
 }
 
 .problem-desc {
   font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+  color: var(--text-body) !important;
+  line-height: 1.65;
 }
 
-/* Solution Banner */
+/* Solution Callout Banner */
 .solution-callout-box {
   margin-top: 50px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(20, 20, 20, 0.95) 100%);
-  border: 1px solid var(--border-gold-solid);
-  border-radius: var(--radius-xl);
-  padding: 36px 40px;
+  background: linear-gradient(135deg, var(--green-800) 0%, var(--green-900) 100%) !important;
+  border: 1px solid var(--border-gold-subtle) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 38px 42px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-emerald);
 }
 
 .solution-callout-text h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 1.6rem;
-  color: var(--gold-300);
+  color: var(--gold-light) !important;
   margin-bottom: 10px;
 }
 
 .solution-callout-text p {
-  font-size: 1.05rem;
-  color: var(--text-main);
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, 0.88) !important;
   line-height: 1.7;
 }
 
-/* ── Why Reseller Ajwa (Kenapa Jadi Reseller) ───────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 2: KENAPA AJWA (DARK EMERALD LIKE index.html KEISTIMEWAAN)
+   ════════════════════════════════════════════════════════════ */
+#kenapa,
+#kenapa.section-why,
 .section-why {
-  padding: 90px 0;
+  padding: 95px 0 !important;
+  background: var(--green-800) !important;
   position: relative;
+}
+
+#kenapa .section-tag {
+  color: var(--gold-light) !important;
+}
+
+#kenapa .section-title {
+  color: var(--white) !important;
+  font-family: var(--font-serif);
+}
+
+#kenapa .section-desc {
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 
 .why-grid {
@@ -658,13 +587,14 @@ body .guarantee-item {
 }
 
 .why-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold-subtle);
-  border-radius: var(--radius-lg);
-  padding: 32px 26px;
-  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(201, 168, 76, 0.2) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 34px 28px !important;
+  transition: var(--transition) !important;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
 .why-card::before {
@@ -674,16 +604,16 @@ body .guarantee-item {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
   opacity: 0;
   transition: var(--transition);
 }
 
 .why-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--border-gold-light);
-  background: var(--bg-card-hover);
-  box-shadow: var(--shadow-gold);
+  transform: translateY(-6px) !important;
+  border-color: var(--gold-400) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
 .why-card:hover::before {
@@ -697,33 +627,48 @@ body .guarantee-item {
 }
 
 .why-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 1.3rem;
-  color: #FFF;
+  color: var(--white) !important;
   margin-bottom: 12px;
 }
 
 .why-desc {
   font-size: 0.94rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.80) !important;
   line-height: 1.65;
 }
 
-/* ── What Reseller Gets (Apa Reseller Dapat) ─────────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 3: PAKEJ USAHAWAN (CREAM THEME + EMERALD MASTER CARD)
+   ════════════════════════════════════════════════════════════ */
 #pakej,
 #pakej.section-package,
 .section-package {
-  padding: 90px 0 !important;
-  background: linear-gradient(180deg, #090909 0%, #121008 100%) !important;
+  padding: 95px 0 !important;
+  background: var(--cream-200) !important;
   position: relative;
 }
 
+#pakej .section-tag {
+  color: var(--gold-500) !important;
+}
+
+#pakej .section-title {
+  color: var(--text-dark) !important;
+  font-family: var(--font-serif);
+}
+
+#pakej .section-desc {
+  color: var(--text-muted) !important;
+}
+
 .package-master-card {
-  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.12) 0%, #111111 60%);
-  border: 2px solid var(--gold-500);
-  border-radius: var(--radius-xl);
-  padding: 50px 44px;
-  box-shadow: 0 25px 70px -10px rgba(212, 175, 55, 0.25);
+  background: linear-gradient(145deg, var(--green-800) 0%, var(--green-900) 100%) !important;
+  border: 2px solid var(--gold-400) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 50px 44px !important;
+  box-shadow: 0 20px 60px rgba(4, 27, 20, 0.25) !important;
   margin-top: 40px;
 }
 
@@ -731,7 +676,7 @@ body .guarantee-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-gold-subtle);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
   padding-bottom: 28px;
   margin-bottom: 34px;
   flex-wrap: wrap;
@@ -739,8 +684,8 @@ body .guarantee-item {
 }
 
 .package-main-badge {
-  background: var(--gold-500);
-  color: #000;
+  background: var(--gold-400);
+  color: var(--green-900);
   font-weight: 800;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -752,9 +697,9 @@ body .guarantee-item {
 }
 
 .package-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 2.2rem;
-  color: #FFF;
+  color: var(--white) !important;
 }
 
 .package-pricing-badge {
@@ -763,7 +708,7 @@ body .guarantee-item {
 
 .package-pricing-label {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.72) !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -771,14 +716,14 @@ body .guarantee-item {
 .package-price-number {
   font-size: 2.8rem;
   font-weight: 900;
-  color: var(--gold-400);
-  font-family: var(--font-heading);
+  color: var(--gold-light) !important;
+  font-family: var(--font-serif);
   line-height: 1;
 }
 
 .package-price-sub {
   font-size: 0.9rem;
-  color: var(--text-main);
+  color: rgba(255, 255, 255, 0.85) !important;
   margin-top: 4px;
 }
 
@@ -793,21 +738,21 @@ body .guarantee-item {
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-gold-subtle);
-  padding: 20px;
-  border-radius: var(--radius-md);
-  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(201, 168, 76, 0.2) !important;
+  padding: 20px !important;
+  border-radius: var(--radius-md) !important;
+  transition: var(--transition) !important;
 }
 
 .package-item:hover {
-  border-color: var(--border-gold-light);
-  background: rgba(212, 175, 55, 0.05);
+  border-color: var(--gold-400) !important;
+  background: rgba(201, 168, 76, 0.1) !important;
 }
 
 .package-item.highlight-bonus {
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(20, 20, 20, 0.6) 100%);
+  border: 1px solid var(--gold-400) !important;
+  background: rgba(201, 168, 76, 0.12) !important;
 }
 
 .package-item-icon {
@@ -818,21 +763,39 @@ body .guarantee-item {
 
 .package-item-text h4 {
   font-size: 1.05rem;
-  color: #FFF;
+  color: var(--white) !important;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .package-item-text p {
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.82) !important;
   line-height: 1.5;
 }
 
-/* ── Profit Breakdown & Interactive Calculator ──────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 4: POTENSI KEUNTUNGAN (WHITE/CREAM THEME)
+   ════════════════════════════════════════════════════════════ */
+#potensi,
+#potensi.section-profit,
 .section-profit {
-  padding: 95px 0;
+  padding: 95px 0 !important;
+  background: var(--cream-100) !important;
   position: relative;
+}
+
+#potensi .section-tag {
+  color: var(--gold-500) !important;
+}
+
+#potensi .section-title {
+  color: var(--text-dark) !important;
+  font-family: var(--font-serif);
+}
+
+#potensi .section-desc {
+  color: var(--text-muted) !important;
 }
 
 .profit-stat-strip {
@@ -844,53 +807,67 @@ body .guarantee-item {
 }
 
 .profit-stat-card {
-  background: #111111;
-  border: 1px solid var(--border-gold-subtle);
-  border-radius: var(--radius-md);
-  padding: 22px 18px;
+  background: var(--white) !important;
+  border: 1px solid var(--cream-300) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 22px 18px !important;
   text-align: center;
-  transition: var(--transition);
+  box-shadow: var(--shadow-card) !important;
+  transition: var(--transition) !important;
 }
 
 .profit-stat-card:hover {
-  border-color: var(--gold-500);
-  transform: translateY(-4px);
+  border-color: var(--gold-400) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-card-hover) !important;
 }
 
 .profit-stat-card.hero-stat {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, #151515 100%);
-  border: 1px solid var(--gold-500);
+  background: linear-gradient(135deg, var(--green-800) 0%, var(--green-900) 100%) !important;
+  border: 1.5px solid var(--gold-400) !important;
 }
 
 .profit-stat-label {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   margin-bottom: 6px;
 }
 
+.profit-stat-card.hero-stat .profit-stat-label {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
 .profit-stat-val {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 1.9rem;
   font-weight: 800;
-  color: var(--gold-400);
+  color: var(--green-800) !important;
   line-height: 1.1;
   margin-bottom: 4px;
 }
 
+.profit-stat-card.hero-stat .profit-stat-val {
+  color: var(--gold-light) !important;
+}
+
 .profit-stat-footnote {
   font-size: 0.78rem;
-  color: var(--text-subtle);
+  color: var(--text-muted) !important;
+}
+
+.profit-stat-card.hero-stat .profit-stat-footnote {
+  color: rgba(255, 255, 255, 0.72) !important;
 }
 
 /* Calculator Box */
 .calculator-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold-light);
-  border-radius: var(--radius-xl);
-  padding: 40px;
-  box-shadow: var(--shadow-subtle);
+  background: var(--white) !important;
+  border: 1px solid var(--cream-300) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 40px !important;
+  box-shadow: var(--shadow-card) !important;
 }
 
 .calc-header {
@@ -899,10 +876,14 @@ body .guarantee-item {
 }
 
 .calc-header h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 1.7rem;
-  color: #FFF;
+  color: var(--text-dark) !important;
   margin-bottom: 8px;
+}
+
+.calc-header p {
+  color: var(--text-muted) !important;
 }
 
 .calc-presets {
@@ -914,38 +895,39 @@ body .guarantee-item {
 }
 
 .calc-preset-btn {
-  background: #1c1a16;
-  border: 1px solid var(--border-gold-subtle);
-  color: var(--text-main);
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
+  background: var(--cream-200) !important;
+  border: 1px solid var(--cream-300) !important;
+  color: var(--text-dark) !important;
+  padding: 10px 20px !important;
+  border-radius: var(--radius-sm) !important;
   font-size: 0.92rem;
   font-weight: 600;
-  transition: var(--transition);
+  transition: var(--transition) !important;
 }
 
 .calc-preset-btn:hover {
-  border-color: var(--gold-400);
-  color: #FFF;
+  border-color: var(--green-800) !important;
+  color: var(--green-800) !important;
 }
 
 .calc-preset-btn.active {
-  background: var(--gold-500);
-  color: #000;
-  border-color: var(--gold-500);
+  background: var(--green-800) !important;
+  color: var(--white) !important;
+  border-color: var(--green-800) !important;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 15px rgba(8, 45, 34, 0.3) !important;
 }
 
 .calc-results-card {
-  background: #090909;
-  border: 1px solid var(--border-gold-subtle);
-  border-radius: var(--radius-lg);
-  padding: 30px;
+  background: linear-gradient(145deg, var(--green-800) 0%, var(--green-900) 100%) !important;
+  border: 1px solid var(--border-gold-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 30px !important;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 24px;
   text-align: center;
+  box-shadow: var(--shadow-emerald);
 }
 
 .calc-res-item {
@@ -956,34 +938,49 @@ body .guarantee-item {
 
 .calc-res-title {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.75) !important;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 8px;
 }
 
 .calc-res-num {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 2.2rem;
   font-weight: 800;
-  color: #FFF;
+  color: var(--white) !important;
 }
 
 .calc-res-num.highlight {
-  color: #4ade80;
-  text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+  color: var(--gold-light) !important;
+  text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
 }
 
 .calc-res-sub {
   font-size: 0.82rem;
-  color: var(--text-subtle);
+  color: rgba(255, 255, 255, 0.7) !important;
   margin-top: 4px;
 }
 
-/* ── Benefits Section (Kebaikan Kepada Reseller) ────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 5: KELEBIHAN (CREAM THEME LIKE index.html)
+   ════════════════════════════════════════════════════════════ */
 .section-benefits {
-  padding: 90px 0;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, #100e07 100%);
+  padding: 95px 0 !important;
+  background: var(--cream-200) !important;
+}
+
+.section-benefits .section-tag {
+  color: var(--gold-500) !important;
+}
+
+.section-benefits .section-title {
+  color: var(--text-dark) !important;
+  font-family: var(--font-serif);
+}
+
+.section-benefits .section-desc {
+  color: var(--text-muted) !important;
 }
 
 .benefit-cards-grid {
@@ -994,57 +991,75 @@ body .guarantee-item {
 }
 
 .benefit-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-gold-subtle);
-  border-radius: var(--radius-lg);
-  padding: 34px 26px;
-  transition: var(--transition);
+  background: var(--white) !important;
+  border: 1px solid var(--cream-300) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 34px 26px !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: var(--transition) !important;
   position: relative;
 }
 
 .benefit-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--border-gold-light);
-  background: rgba(212, 175, 55, 0.05);
+  transform: translateY(-5px) !important;
+  border-color: var(--gold-400) !important;
+  box-shadow: var(--shadow-card-hover) !important;
 }
 
 .benefit-num {
-  font-size: 2.5rem;
-  font-family: var(--font-heading);
-  font-weight: 900;
-  color: rgba(212, 175, 55, 0.25);
+  font-size: 2.8rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--cream-300) !important;
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .benefit-title {
   font-size: 1.22rem;
+  font-family: var(--font-serif);
   font-weight: 700;
-  color: #FFF;
+  color: var(--text-dark) !important;
   margin-bottom: 10px;
 }
 
 .benefit-desc {
   font-size: 0.94rem;
-  color: var(--text-muted);
+  color: var(--text-body) !important;
   line-height: 1.65;
 }
 
-/* ── Marketing Bonus Showcase (Bonus PERCUMA) ──────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 6: BONUS MARKETING (DARK EMERALD THEME LIKE index.html)
+   ════════════════════════════════════════════════════════════ */
 #bonus,
 #bonus.section-bonus,
 .section-bonus {
   padding: 95px 0 !important;
-  background: var(--bg-surface) !important;
+  background: var(--green-800) !important;
   position: relative;
 }
 
+#bonus .section-tag {
+  color: var(--gold-light) !important;
+}
+
+#bonus .section-title {
+  color: var(--white) !important;
+  font-family: var(--font-serif);
+}
+
+#bonus .section-desc {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
 .bonus-showcase-box {
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, #101010 80%);
-  border: 1px solid var(--border-gold-light);
-  border-radius: var(--radius-xl);
-  padding: 50px;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(201, 168, 76, 0.3) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 50px !important;
   margin-top: 46px;
+  backdrop-filter: blur(8px);
 }
 
 .bonus-cards-row {
@@ -1054,23 +1069,24 @@ body .guarantee-item {
 }
 
 .bonus-box-card {
-  background: #161513;
-  border: 1px solid var(--border-gold-subtle);
-  border-radius: var(--radius-md);
-  padding: 28px 24px;
+  background: rgba(4, 27, 20, 0.75) !important;
+  border: 1px solid rgba(201, 168, 76, 0.25) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 28px 24px !important;
   position: relative;
-  transition: var(--transition);
+  transition: var(--transition) !important;
 }
 
 .bonus-box-card:hover {
-  border-color: var(--gold-400);
-  transform: translateY(-4px);
+  border-color: var(--gold-400) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
 .bonus-pill {
   display: inline-block;
   background: #dc2626;
-  color: #FFF;
+  color: var(--white);
   font-size: 0.72rem;
   font-weight: 800;
   padding: 3px 10px;
@@ -1081,15 +1097,15 @@ body .guarantee-item {
 }
 
 .bonus-box-card h4 {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: 1.3rem;
-  color: #FFF;
+  color: var(--white) !important;
   margin-bottom: 8px;
 }
 
 .bonus-box-card p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.82) !important;
   line-height: 1.6;
 }
 
@@ -1102,17 +1118,32 @@ body .guarantee-item {
 
 .bonus-tag {
   font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(201, 168, 76, 0.15) !important;
   padding: 4px 10px;
   border-radius: 4px;
-  color: var(--gold-300);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  color: var(--gold-light) !important;
+  border: 1px solid rgba(201, 168, 76, 0.3) !important;
 }
 
-/* ── Steps to Start ────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 7: LANGKAH MULA (CREAM THEME LIKE index.html)
+   ════════════════════════════════════════════════════════════ */
 .section-steps {
-  padding: 90px 0;
-  background: #080808;
+  padding: 95px 0 !important;
+  background: var(--cream-200) !important;
+}
+
+.section-steps .section-tag {
+  color: var(--gold-500) !important;
+}
+
+.section-steps .section-title {
+  color: var(--text-dark) !important;
+  font-family: var(--font-serif);
+}
+
+.section-steps .section-desc {
+  color: var(--text-muted) !important;
 }
 
 .steps-container {
@@ -1124,27 +1155,30 @@ body .guarantee-item {
 }
 
 .step-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold-subtle);
-  border-radius: var(--radius-md);
-  padding: 30px 22px;
+  background: var(--white) !important;
+  border: 1px solid var(--cream-300) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 30px 22px !important;
   text-align: center;
+  box-shadow: var(--shadow-card) !important;
   position: relative;
-  transition: var(--transition);
+  transition: var(--transition) !important;
 }
 
 .step-card:hover {
-  border-color: var(--gold-400);
-  transform: translateY(-4px);
+  border-color: var(--gold-400) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-card-hover) !important;
 }
 
 .step-badge-num {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
-  color: #000;
-  font-weight: 900;
+  background: var(--gold-400) !important;
+  color: var(--green-900) !important;
+  font-family: var(--font-serif);
+  font-weight: 800;
   font-size: 1.2rem;
   display: flex;
   align-items: center;
@@ -1153,22 +1187,96 @@ body .guarantee-item {
 }
 
 .step-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #FFF;
+  font-family: var(--font-serif);
+  color: var(--text-dark) !important;
   margin-bottom: 8px;
 }
 
 .step-desc {
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: var(--text-body) !important;
   line-height: 1.55;
 }
 
-/* ── Final Closing CTA ─────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   SECTION 8: FAQ / SOALAN LAZIM (CREAM THEME MATCHING index.html)
+   ════════════════════════════════════════════════════════════ */
+#soalan,
+#soalan.section-faq,
+.section-faq {
+  padding: 95px 0 !important;
+  background: var(--cream-200) !important;
+}
+
+#soalan .section-tag {
+  color: var(--gold-500) !important;
+}
+
+#soalan .section-title {
+  color: var(--text-dark) !important;
+  font-family: var(--font-serif);
+}
+
+#soalan .section-desc {
+  color: var(--text-muted) !important;
+}
+
+.section-faq .faq-item {
+  background: var(--white) !important;
+  border: 1px solid var(--cream-300) !important;
+  border-radius: var(--radius-md) !important;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(4, 27, 20, 0.04) !important;
+}
+
+.section-faq .faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 22px 24px;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark) !important;
+  background: var(--white) !important;
+  transition: color var(--transition);
+}
+
+.section-faq .faq-question:hover {
+  color: var(--green-700) !important;
+}
+
+.section-faq .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-faq .faq-item.active .faq-answer {
+  max-height: 400px;
+}
+
+.section-faq .faq-answer p {
+  padding: 0 24px 22px;
+  font-size: 0.9rem;
+  color: var(--text-body) !important;
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SECTION 9: FINAL CLOSING CTA (DARK EMERALD LIKE index.html ORDER)
+   ════════════════════════════════════════════════════════════ */
+#tempah,
+#tempah.section-final-cta,
 .section-final-cta {
-  padding: 100px 0;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.16) 0%, var(--bg-deep) 75%);
+  padding: 100px 0 !important;
+  background: linear-gradient(160deg, var(--green-800) 0%, var(--green-900) 100%) !important;
   position: relative;
   text-align: center;
 }
@@ -1176,18 +1284,18 @@ body .guarantee-item {
 .final-cta-box {
   max-width: 860px;
   margin: 0 auto;
-  background: rgba(18, 18, 18, 0.95);
-  border: 2px solid var(--gold-500);
-  border-radius: var(--radius-xl);
-  padding: 60px 40px;
-  box-shadow: 0 20px 80px -10px rgba(212, 175, 55, 0.4);
+  background: rgba(4, 27, 20, 0.85) !important;
+  border: 2px solid var(--gold-400) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 60px 40px !important;
+  box-shadow: 0 20px 80px -10px rgba(0, 0, 0, 0.5) !important;
 }
 
 .final-cta-badge {
   display: inline-block;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid var(--border-gold-light);
-  color: var(--gold-300);
+  background: rgba(201, 168, 76, 0.15) !important;
+  border: 1px solid rgba(201, 168, 76, 0.4) !important;
+  color: var(--gold-light) !important;
   font-size: 0.82rem;
   font-weight: 700;
   padding: 6px 18px;
@@ -1198,17 +1306,17 @@ body .guarantee-item {
 }
 
 .final-cta-headline {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  color: #FFF;
+  font-weight: 700;
+  color: var(--white) !important;
   margin-bottom: 18px;
   line-height: 1.2;
 }
 
 .final-cta-desc {
   font-size: 1.12rem;
-  color: var(--text-main);
+  color: rgba(255, 255, 255, 0.88) !important;
   max-width: 680px;
   margin: 0 auto 36px;
   line-height: 1.7;
@@ -1231,8 +1339,8 @@ body .guarantee-item {
   color: #03200e;
   font-weight: 700;
   font-size: 1rem;
-  padding: 18px 32px;
-  border-radius: var(--radius-sm);
+  padding: 16px 32px;
+  border-radius: 100px;
   transition: var(--transition);
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
 }
@@ -1250,7 +1358,7 @@ body .guarantee-item {
   justify-content: center;
   gap: 24px;
   padding-top: 24px;
-  border-top: 1px solid var(--border-gold-subtle);
+  border-top: 1px solid rgba(201, 168, 76, 0.25);
 }
 
 .guarantee-item {
@@ -1258,18 +1366,20 @@ body .guarantee-item {
   align-items: center;
   gap: 8px;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
-/* ── Sticky Reseller Bar for Quick Mobile Order ────────────── */
+/* ════════════════════════════════════════════════════════════
+   STICKY RESELLER BAR (LUXURY EMERALD TO MATCH index.html)
+   ════════════════════════════════════════════════════════════ */
 .reseller-sticky-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(4, 27, 20, 0.96);
   backdrop-filter: blur(14px);
-  border-top: 1px solid var(--border-gold-light);
+  border-top: 1px solid rgba(201, 168, 76, 0.25);
   padding: 12px 24px;
   display: flex;
   align-items: center;
@@ -1278,7 +1388,7 @@ body .guarantee-item {
   z-index: 999;
   transform: translateY(120%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .reseller-sticky-bar.visible {
@@ -1293,16 +1403,18 @@ body .guarantee-item {
 
 .sticky-pack-badge {
   font-weight: 800;
-  color: var(--gold-400);
+  color: var(--gold-light);
   font-size: 1.1rem;
 }
 
 .sticky-pack-sub {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.75);
 }
 
-/* ── Responsive Queries ────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 991px) {
   .reseller-hero-grid {
     grid-template-columns: 1fr;
@@ -1341,7 +1453,7 @@ body .guarantee-item {
 
 @media (max-width: 600px) {
   .hero-reseller {
-    padding-top: 140px; /* announcement (~37px) + navbar (~76px) + breathing room */
+    padding-top: 140px;
     padding-bottom: 60px;
   }
   
