@@ -57,7 +57,7 @@
          Zon waktu: Malaysia (Asia/Kuala_Lumpur)
       ────────────────────────────────────────────────────────── */
       promoEnabled: true,
-      promoStart:   "2026-11-01",   /* ✏️ Tukar jika perlu */
+      promoStart:   "2026-10-29",   /* ✏️ Tukar jika perlu */
       promoEnd:     "2026-11-15",   /* ✏️ Tukar jika perlu */
 
       /* ── Pakej & Harga ──────────────────────────────────────
@@ -244,26 +244,41 @@
       margin-bottom: 10px;
     }
     .pu-price-row {
-      display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 4px;
+      display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px;
     }
-    /* Harga asal — coretan jelas, besar */
+    /* Harga asal — dipotong dengan warna bersesuaian */
     .pu-orig {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.4rem; font-weight: 700;
-      color: rgba(255,255,255,.38);
-      text-decoration: line-through;
-      text-decoration-color: rgba(220,60,60,.80);
-      text-decoration-thickness: 3px;
+      font-size: 2.2rem; font-weight: 700;
+      color: rgba(201,168,76,.55);
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      line-height: 1;
     }
-    /* Harga promosi — gold, lebih besar */
+    /* Garisan potong harga — merah coral kemas dan elegan */
+    .pu-orig::after {
+      content: '';
+      position: absolute;
+      left: -4px; right: -4px;
+      top: 50%;
+      height: 3.5px;
+      background: #e63946;
+      border-radius: 2px;
+      transform: translateY(-50%) rotate(-7deg);
+      box-shadow: 0 2px 6px rgba(230,57,70,.45);
+    }
+    /* Harga promosi — gold cerah menonjol */
     .pu-promo {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.4rem; font-weight: 700;
-      color: #c9a84c; line-height: 1;
+      font-size: 2.8rem; font-weight: 800;
+      color: #ffdb70; line-height: 1;
+      text-shadow: 0 2px 10px rgba(201,168,76,.25);
     }
-    /* Harga asal sahaja (tanpa promo) — size lebih besar */
+    /* Harga asal sahaja (tanpa promo) — saiz standard */
     .pu-promo.solo {
       font-size: 3rem;
+      color: #c9a84c;
     }
     .pu-savings {
       display: inline-block;
@@ -318,9 +333,9 @@
       .pu-cards-row { grid-template-columns: 1fr; gap: 36px; }
       .pu-card-body { padding: 38px 22px 28px; }
       .pu-card--featured .pu-card-body { padding-top: 50px; }
-      .pu-orig { font-size: 1.8rem; }
-      .pu-promo { font-size: 1.8rem; }
-      .pu-promo.solo { font-size: 2.4rem; }
+      .pu-orig { font-size: 1.7rem; }
+      .pu-promo { font-size: 2.3rem; }
+      .pu-promo.solo { font-size: 2.5rem; }
     }
     @media (max-width: 480px) {
       .pu-cards-row { grid-template-columns: 1fr; }
