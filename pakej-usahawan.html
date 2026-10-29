@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pakej Usahawan Ajwa of Madinah | Kurma Premium dari Madinah Al-Munawwarah</title>
   <meta name="description"
-    content="Sertai Pakej Usahawan Ajwa of Madinah. Pilih Pakej 10 Pek atau 20 Pek kurma premium berkualiti tinggi dari Madinah, dengan poster dan video marketing PERCUMA." />
+    content="Sertai Pakej Usahawan Ajwa of Madinah. Pilih Pakej 10 Paket atau 20 Paket kurma premium berkualiti tinggi dari Madinah, dengan poster dan video marketing PERCUMA." />
   <meta name="keywords"
     content="pakej usahawan kurma ajwa, bisnes kurma, ajwa madinah, irfan khairi, jana pendapatan sampingan" />
-  <meta property="og:title" content="Pakej Usahawan Kurma Ajwa of Madinah — 10 Pek atau 20 Pek" />
+  <meta property="og:title" content="Pakej Usahawan Kurma Ajwa of Madinah — 10 Paket atau 20 Paket" />
   <meta property="og:description"
     content="Mulakan bisnes kurma premium tanpa pening fikir produk & content. Lengkap poster dan video marketing PERCUMA." />
   <meta property="og:image" content="assets/sample-3-removebg-preview.png" />
@@ -37,8 +37,8 @@
        ubah nilai tersebut sahaja. Halaman akan kemas kini secara
        automatik apabila promosi aktif.
 
-       Contoh tukar harga 10 pek: promoPrice: 170 → promoPrice: 160
-       Contoh tukar harga 20 pek: promoPrice: 300 → promoPrice: 280
+       Contoh tukar harga 10 paket: promoPrice: 170 → promoPrice: 160
+       Contoh tukar harga 20 paket: promoPrice: 300 → promoPrice: 280
 
        Untuk NYAHAKTIFKAN promosi sepenuhnya (walaupun dalam tempoh):
          tukar  promoEnabled: true  kepada  promoEnabled: false
@@ -57,8 +57,8 @@
          Zon waktu: Malaysia (Asia/Kuala_Lumpur)
       ────────────────────────────────────────────────────────── */
       promoEnabled: true,
-      promoStart:   "2026-10-29",   /* ✏️ Tukar jika perlu */
-      promoEnd:     "2026-11-15",   /* ✏️ Tukar jika perlu */
+      promoStart: "2026-10-29",   /* ✏️ Tukar jika perlu */
+      promoEnd: "2026-11-15",   /* ✏️ Tukar jika perlu */
 
       /* ── Pakej & Harga ──────────────────────────────────────
          ✏️  TUKAR "promoPrice" SAHAJA untuk harga promosi baharu.
@@ -67,18 +67,18 @@
       ────────────────────────────────────────────────────────── */
       packages: [
         {
-          id:            "pek-10",
-          name:          "Pakej Usahawan 10 Pek",
-          quantity:      10,
+          id: "paket-10",
+          name: "Pakej Usahawan 10 Paket",
+          quantity: 10,
           originalPrice: 200,   /* RM200 — harga asal */
-          promoPrice:    170    /* ✏️ Tukar ini untuk harga promosi 10 pek */
+          promoPrice: 170    /* ✏️ Tukar ini untuk harga promosi 10 paket */
         },
         {
-          id:            "pek-20",
-          name:          "Pakej Usahawan 20 Pek",
-          quantity:      20,
+          id: "paket-20",
+          name: "Pakej Usahawan 20 Paket",
+          quantity: 20,
           originalPrice: 340,   /* RM340 — harga asal */
-          promoPrice:    300    /* ✏️ Tukar ini untuk harga promosi 20 pek */
+          promoPrice: 300    /* ✏️ Tukar ini untuk harga promosi 20 paket */
         }
       ]
     };
@@ -98,9 +98,9 @@
         var s = PAKEJ_CONFIG.promoStart.split('-').map(Number);
         var e = PAKEJ_CONFIG.promoEnd.split('-').map(Number);
         var start = new Date(s[0], s[1] - 1, s[2]);
-        var end   = new Date(e[0], e[1] - 1, e[2]);
+        var end = new Date(e[0], e[1] - 1, e[2]);
         return today >= start && today <= end;
-      } catch(err) { return false; }
+      } catch (err) { return false; }
     }
 
     /** Render kedua-dua kad pakej ke dalam #pakej-cards-wrapper */
@@ -110,8 +110,8 @@
       var promoOn = isPromoActive();
       var html = '';
 
-      PAKEJ_CONFIG.packages.forEach(function(pkg, idx) {
-        var savings   = pkg.originalPrice - pkg.promoPrice;
+      PAKEJ_CONFIG.packages.forEach(function (pkg, idx) {
+        var savings = pkg.originalPrice - pkg.promoPrice;
         var isFeatured = idx === 1;
 
         /* Blok harga */
@@ -120,37 +120,37 @@
           priceHTML =
             '<div class="pu-promo-badge">HARGA PROMOSI</div>' +
             '<div class="pu-price-row">' +
-              '<span class="pu-orig">RM' + pkg.originalPrice + '</span>' +
-              '<span class="pu-promo">RM' + pkg.promoPrice + '</span>' +
+            '<span class="pu-orig">RM' + pkg.originalPrice + '</span>' +
+            '<span class="pu-promo">RM' + pkg.promoPrice + '</span>' +
             '</div>' +
             '<div class="pu-savings">✦ Jimat RM' + savings + '</div>';
         } else {
           priceHTML =
             '<div class="pu-price-row">' +
-              '<span class="pu-promo solo">RM' + pkg.originalPrice + '</span>' +
+            '<span class="pu-promo solo">RM' + pkg.originalPrice + '</span>' +
             '</div>';
         }
 
         html +=
           '<div class="pu-card' + (isFeatured ? ' pu-card--featured' : '') + '" id="' + pkg.id + '">' +
-            (isFeatured ? '<div class="pu-ribbon">PALING POPULAR</div>' : '') +
-            '<div class="pu-card-body">' +
-              '<div class="pu-type">PAKEJ USAHAWAN</div>' +
-              '<h3 class="pu-qty">' + pkg.quantity + ' PEK AJWA OF MADINAH</h3>' +
-              '<div class="pu-price-block">' + priceHTML + '</div>' +
-              '<div class="pu-divider"></div>' +
-              '<ul class="pu-features">' +
-                '<li><span class="pu-check">✓</span>' + pkg.quantity + ' pek ziplock Kurma Ajwa 200g</li>' +
-                '<li><span class="pu-check">✓</span>100% Kurma Ajwa asli dari Madinah Al-Munawwarah</li>' +
-                '<li><span class="pu-check">✓</span>Pek ziplock matte black &amp; gold eksklusif</li>' +
-                '<li><span class="pu-check">✓</span>Poster &amp; video marketing PERCUMA</li>' +
-                '<li><span class="pu-check">✓</span>Diimport oleh Irfan Khairi Sdn Bhd</li>' +
-              '</ul>' +
-              '<a href="' + PAKEJ_CONFIG.onpayUrl + '" target="_blank" rel="noopener noreferrer"' +
-                ' class="pu-cta-btn" aria-label="Dapatkan ' + pkg.name + ' melalui OnPay">' +
-                'DAPATKAN PAKEJ INI →' +
-              '</a>' +
-            '</div>' +
+          (isFeatured ? '<div class="pu-ribbon">PALING POPULAR</div>' : '') +
+          '<div class="pu-card-body">' +
+          '<div class="pu-type">PAKEJ USAHAWAN</div>' +
+          '<h3 class="pu-qty">' + pkg.quantity + ' PAKET AJWA OF MADINAH</h3>' +
+          '<div class="pu-price-block">' + priceHTML + '</div>' +
+          '<div class="pu-divider"></div>' +
+          '<ul class="pu-features">' +
+          '<li><span class="pu-check">✓</span>' + pkg.quantity + ' paket ziplock Kurma Ajwa 200g</li>' +
+          '<li><span class="pu-check">✓</span>100% Kurma Ajwa asli dari Madinah Al-Munawwarah</li>' +
+          '<li><span class="pu-check">✓</span>Paket ziplock matte black &amp; gold eksklusif</li>' +
+          '<li><span class="pu-check">✓</span>Poster &amp; video marketing PERCUMA</li>' +
+          '<li><span class="pu-check">✓</span>Diimport oleh Irfan Khairi Sdn Bhd</li>' +
+          '</ul>' +
+          '<a href="' + PAKEJ_CONFIG.onpayUrl + '" target="_blank" rel="noopener noreferrer"' +
+          ' class="pu-cta-btn" aria-label="Dapatkan ' + pkg.name + ' melalui OnPay">' +
+          'DAPATKAN PAKEJ INI →' +
+          '</a>' +
+          '</div>' +
           '</div>';
       });
 
@@ -159,12 +159,12 @@
 
     /** Kemas kini semua [data-onpay] dengan URL dari konfigurasi */
     function wireOnPayLinks() {
-      document.querySelectorAll('[data-onpay]').forEach(function(el) {
+      document.querySelectorAll('[data-onpay]').forEach(function (el) {
         el.setAttribute('href', PAKEJ_CONFIG.onpayUrl);
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       renderCards();
       wireOnPayLinks();
     });
@@ -177,14 +177,22 @@
     .pu-cards-section {
       background: #0a2318;
       padding-block: var(--section-py, 96px);
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     .pu-cards-section::before {
-      content: ''; position: absolute; top: -200px; right: -200px;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, .06) 0%, transparent 70%);
       pointer-events: none;
     }
+
     .pu-cards-row {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -192,161 +200,278 @@
       margin-top: 56px;
       align-items: start;
     }
+
     /* Card — solid dark green like reference */
     .pu-card {
-      border: 1px solid rgba(201,168,76,.22);
+      border: 1px solid rgba(201, 168, 76, .22);
       border-radius: 20px;
       background: #0f3322;
       position: relative;
       overflow: hidden;
-      transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s, box-shadow .35s;
+      transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .35s, box-shadow .35s;
     }
+
     .pu-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(201,168,76,.50);
-      box-shadow: 0 20px 56px rgba(0,0,0,.40);
+      border-color: rgba(201, 168, 76, .50);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, .40);
     }
+
     .pu-card--featured {
       border-color: #c9a84c;
       background: #0f3322;
-      box-shadow: 0 0 0 2px #c9a84c, 0 12px 48px rgba(201,168,76,.20);
+      box-shadow: 0 0 0 2px #c9a84c, 0 12px 48px rgba(201, 168, 76, .20);
     }
+
     /* Ribbon */
     .pu-ribbon {
-      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-      background: #c9a84c; color: #041b14;
-      font-size: .68rem; font-weight: 800; letter-spacing: .10em; text-transform: uppercase;
-      padding: 6px 28px; border-radius: 0 0 14px 14px; white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(201,168,76,.40);
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c9a84c;
+      color: #041b14;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      padding: 6px 28px;
+      border-radius: 0 0 14px 14px;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(201, 168, 76, .40);
     }
+
     /* Card body */
-    .pu-card-body { padding: 40px 36px 36px; }
-    .pu-card--featured .pu-card-body { padding-top: 52px; }
+    .pu-card-body {
+      padding: 40px 36px 36px;
+    }
+
+    .pu-card--featured .pu-card-body {
+      padding-top: 52px;
+    }
 
     /* Labels */
     .pu-type {
-      font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(201,168,76,.75); margin-bottom: 8px;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, .75);
+      margin-bottom: 8px;
     }
+
     .pu-qty {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.45rem; font-weight: 700; color: #fff;
-      line-height: 1.25; margin-bottom: 22px;
-      text-transform: uppercase; letter-spacing: .02em;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      letter-spacing: .02em;
     }
+
     /* Price block */
-    .pu-price-block { margin-bottom: 24px; }
+    .pu-price-block {
+      margin-bottom: 24px;
+    }
+
     .pu-promo-badge {
       display: inline-block;
-      font-size: .65rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
       color: #c9a84c;
-      background: rgba(201,168,76,.12); padding: 3px 12px; border-radius: 100px;
+      background: rgba(201, 168, 76, .12);
+      padding: 3px 12px;
+      border-radius: 100px;
       margin-bottom: 10px;
     }
+
     .pu-price-row {
-      display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
     }
+
     /* Harga asal — dipotong dengan warna bersesuaian */
     .pu-orig {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.2rem; font-weight: 700;
-      color: rgba(201,168,76,.55);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(201, 168, 76, .55);
       position: relative;
       display: inline-block;
       text-decoration: none;
       line-height: 1;
     }
+
     /* Garisan potong harga — merah coral kemas dan elegan */
     .pu-orig::after {
       content: '';
       position: absolute;
-      left: -4px; right: -4px;
+      left: -4px;
+      right: -4px;
       top: 50%;
       height: 3.5px;
       background: #e63946;
       border-radius: 2px;
       transform: translateY(-50%) rotate(-7deg);
-      box-shadow: 0 2px 6px rgba(230,57,70,.45);
+      box-shadow: 0 2px 6px rgba(230, 57, 70, .45);
     }
+
     /* Harga promosi — gold cerah menonjol */
     .pu-promo {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.8rem; font-weight: 800;
-      color: #ffdb70; line-height: 1;
-      text-shadow: 0 2px 10px rgba(201,168,76,.25);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffdb70;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(201, 168, 76, .25);
     }
+
     /* Harga asal sahaja (tanpa promo) — saiz standard */
     .pu-promo.solo {
       font-size: 3rem;
       color: #c9a84c;
     }
+
     .pu-savings {
       display: inline-block;
-      font-size: .82rem; font-weight: 700;
+      font-size: .82rem;
+      font-weight: 700;
       color: #c9a84c;
-      background: rgba(201,168,76,.12); padding: 4px 16px;
-      border-radius: 100px; margin-top: 8px;
+      background: rgba(201, 168, 76, .12);
+      padding: 4px 16px;
+      border-radius: 100px;
+      margin-top: 8px;
     }
+
     /* Divider */
-    .pu-divider { height: 1px; background: rgba(255,255,255,.10); margin: 22px 0; }
+    .pu-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, .10);
+      margin: 22px 0;
+    }
+
     /* Feature list */
     .pu-features {
-      list-style: none; padding: 0; margin: 0 0 30px;
-      display: flex; flex-direction: column; gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
+
     .pu-features li {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: .875rem; color: rgba(255,255,255,.75); line-height: 1.45;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .875rem;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.45;
     }
+
     .pu-check {
-      flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(201,168,76,.18);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .72rem; color: #c9a84c; font-weight: 700;
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .72rem;
+      color: #c9a84c;
+      font-weight: 700;
       margin-top: 1px;
     }
+
     /* CTA Button */
     .pu-cta-btn {
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; padding: 17px 24px; border-radius: 100px;
-      font-size: .92rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
-      background: #c9a84c; color: #041b14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 17px 24px;
+      border-radius: 100px;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: #c9a84c;
+      color: #041b14;
       text-decoration: none;
       transition: background .3s, transform .3s, box-shadow .3s;
-      box-shadow: 0 4px 20px rgba(201,168,76,.32);
+      box-shadow: 0 4px 20px rgba(201, 168, 76, .32);
     }
+
     .pu-cta-btn:hover {
       background: #b8952f;
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(201,168,76,.45);
+      box-shadow: 0 8px 32px rgba(201, 168, 76, .45);
       color: #041b14;
     }
+
     /* Note below cards */
     .pu-note {
-      text-align: center; margin-top: 28px;
-      font-size: .84rem; color: rgba(255,255,255,.38);
+      text-align: center;
+      margin-top: 28px;
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .38);
     }
-    .pu-note strong { color: rgba(255,255,255,.60); }
+
+    .pu-note strong {
+      color: rgba(255, 255, 255, .60);
+    }
 
     /* Mobile */
     @media (max-width: 768px) {
-      .pu-cards-row { grid-template-columns: 1fr; gap: 36px; }
-      .pu-card-body { padding: 38px 22px 28px; }
-      .pu-card--featured .pu-card-body { padding-top: 50px; }
-      .pu-orig { font-size: 1.7rem; }
-      .pu-promo { font-size: 2.3rem; }
-      .pu-promo.solo { font-size: 2.5rem; }
+      .pu-cards-row {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .pu-card-body {
+        padding: 38px 22px 28px;
+      }
+
+      .pu-card--featured .pu-card-body {
+        padding-top: 50px;
+      }
+
+      .pu-orig {
+        font-size: 1.7rem;
+      }
+
+      .pu-promo {
+        font-size: 2.3rem;
+      }
+
+      .pu-promo.solo {
+        font-size: 2.5rem;
+      }
     }
+
     @media (max-width: 480px) {
-      .pu-cards-row { grid-template-columns: 1fr; }
+      .pu-cards-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ── Top Announcement bar — hide IKSB logo on this page ─── */
-    .nav-logo-sep, .nav-logo-iksb { display: none !important; }
+    .nav-logo-sep,
+    .nav-logo-iksb {
+      display: none !important;
+    }
 
     /* ── Hero product image tweak ───────────────────────────── */
     .reseller-hero-pack-img {
-      filter: drop-shadow(0 24px 60px rgba(0,0,0,.45));
+      filter: drop-shadow(0 24px 60px rgba(0, 0, 0, .45));
     }
   </style>
 </head>
@@ -359,7 +484,7 @@
   <header id="navbar" class="navbar-reseller" role="banner">
     <div class="top-announcement-bar" role="complementary" aria-label="Pakej Usahawan Ajwa of Madinah">
       <span class="badge-live"><span class="live-dot" aria-hidden="true"></span> Dibuka Sekarang</span>
-      <span>Pakej Usahawan Ajwa of Madinah · <strong>10 Pek</strong> &amp; <strong>20 Pek</strong> Tersedia</span>
+      <span>Pakej Usahawan Ajwa of Madinah · <strong>10 Paket</strong> &amp; <strong>20 Paket</strong> Tersedia</span>
     </div>
 
     <div class="container nav-inner">
@@ -380,9 +505,9 @@
           <li><a href="#testimoni">Testimoni</a></li>
           <li><a href="#soalan">FAQ</a></li>
           <li class="nav-cta">
-            <a href="#" data-onpay id="nav-cta-btn" class="btn-gold-nav"
-              target="_blank" rel="noopener noreferrer" aria-label="Dapatkan Pakej Usahawan">
-              <span>💼 Dapatkan Pakej</span>
+            <a href="#" data-onpay id="nav-cta-btn" class="btn-gold-nav" target="_blank" rel="noopener noreferrer"
+              aria-label="Dapatkan Preorder Usahawan">
+              <span>💼 Dapatkan Preorder</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -407,8 +532,9 @@
       <a href="#bonus" class="mobile-link">Bonus Percuma</a>
       <a href="#testimoni" class="mobile-link">Testimoni</a>
       <a href="#soalan" class="mobile-link">FAQ</a>
-      <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold mobile-cta-btn" id="mobile-cta-btn">
-        💼 Dapatkan Pakej Usahawan
+      <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold mobile-cta-btn"
+        id="mobile-cta-btn">
+        💼 Dapatkan Preorder Usahawan
       </a>
     </div>
   </div>
@@ -438,8 +564,9 @@
           </h1>
 
           <p class="hero-reseller-sub reveal d-3">
-            Sertai <strong>Pakej Usahawan Ajwa of Madinah</strong> — kurma premium dari Madinah Al-Munawwarah
-            dalam pek ziplock eksklusif 200g. Pilih <strong>Pakej 10 Pek</strong> atau <strong>Pakej 20 Pek</strong>
+            Sertai <strong>Pakej Usahawan Ajwa of Madinah</strong>, kurma premium dari Madinah Al-Munawwarah
+            dalam paket ziplock eksklusif 200g. Pilih <strong>Pakej 10 Paket</strong> atau <strong>Pakej 20
+              Paket</strong>
             dan mula berniaga hari ini. Poster &amp; video marketing <strong>PERCUMA</strong> disediakan!
           </p>
 
@@ -460,7 +587,8 @@
           </div>
 
           <div class="hero-cta-row reveal d-5">
-            <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow" id="hero-cta-main">
+            <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow"
+              id="hero-cta-main">
               <span class="btn-icon">💼</span>
               <span>DAPATKAN PAKEJ USAHAWAN →</span>
             </a>
@@ -479,8 +607,8 @@
             </div>
 
             <img src="assets/sample-3-removebg-preview.png"
-              alt="Pek Ajwa of Madinah 200g — Kurma Premium Berkhasiat dari Madinah"
-              class="reseller-hero-pack-img" loading="eager" />
+              alt="Paket Ajwa of Madinah 200g — Kurma Premium Berkhasiat dari Madinah" class="reseller-hero-pack-img"
+              loading="eager" />
 
             <div class="floating-badge floating-badge-bottom-right">
               <span class="floating-badge-label">Poster &amp; Video</span>
@@ -530,7 +658,8 @@
         <div class="why-card reveal d-3">
           <span class="why-icon" aria-hidden="true">🎨</span>
           <h3 class="why-title">Bahan Promosi Siap Disediakan</h3>
-          <p class="why-desc">Kami sediakan poster grafik resolusi tinggi dan video marketing profesional secara percuma.
+          <p class="why-desc">Kami sediakan poster grafik resolusi tinggi dan video marketing profesional secara
+            percuma.
             Tidak perlu pening hasilkan content sendiri.</p>
         </div>
 
@@ -538,7 +667,8 @@
           <span class="why-icon" aria-hidden="true">🏛️</span>
           <h3 class="why-title">Diimport Oleh Irfan Khairi Sdn Bhd</h3>
           <p class="why-desc">Diimport terus dari Madinah Al-Munawwarah di bawah pengawasan syarikat ternama
-            <strong>Irfan Khairi Sdn Bhd</strong>. Keaslian dan kualiti gred premium terjamin.</p>
+            <strong>Irfan Khairi Sdn Bhd</strong>. Keaslian dan kualiti gred premium terjamin.
+          </p>
         </div>
       </div>
 
@@ -568,7 +698,7 @@
 
         <div class="package-header-row">
           <div>
-            <span class="package-main-badge">Pakej Usahawan (10 atau 20 Pek)</span>
+            <span class="package-main-badge">Pakej Usahawan (10 atau 20 Paket)</span>
             <h3 class="package-title">Pakej Kurma Ajwa of Madinah 200g</h3>
           </div>
           <div class="package-pricing-badge">
@@ -582,7 +712,7 @@
           <div class="package-item">
             <div class="package-item-icon" aria-hidden="true">📦</div>
             <div class="package-item-text">
-              <h4>Pek Ziplock Ajwa 200g Gred Premium</h4>
+              <h4>Paket Ziplock Ajwa 200g Gred Premium</h4>
               <p>Kurma Ajwa asli dari Madinah dalam bungkusan matte black &amp; gold kedap udara yang eksklusif.</p>
             </div>
           </div>
@@ -590,8 +720,8 @@
           <div class="package-item">
             <div class="package-item-icon" aria-hidden="true">💰</div>
             <div class="package-item-text">
-              <h4>2 Pilihan Pakej — 10 Pek atau 20 Pek</h4>
-              <p>Pilih mengikut kemampuan anda. Bermula kecil dengan 10 pek atau terus besar dengan 20 pek.</p>
+              <h4>2 Pilihan Pakej — 10 Paket atau 20 Paket</h4>
+              <p>Pilih mengikut kemampuan anda. Bermula kecil dengan 10 paket atau terus besar dengan 20 paket.</p>
             </div>
           </div>
 
@@ -630,7 +760,7 @@
 
         <div class="text-center">
           <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold btn-large-cta">
-            <span>💼 DAPATKAN PAKEJ SEKARANG →</span>
+            <span>💼 DAPATKAN PREORDER SEKARANG →</span>
           </a>
         </div>
 
@@ -693,7 +823,7 @@
         <div class="benefit-card reveal d-1">
           <div class="benefit-num">01</div>
           <h3 class="benefit-title">Bermula Kuantiti Kecil</h3>
-          <p class="benefit-desc">Boleh bermula dengan 10 pek sahaja. Risiko rendah, modal mampu milik, tiada tekanan
+          <p class="benefit-desc">Boleh bermula dengan 10 paket sahaja. Risiko rendah, modal mampu milik, tiada tekanan
             lambakan stok.</p>
         </div>
 
@@ -804,8 +934,8 @@
       <div class="steps-container">
         <div class="step-card reveal d-1">
           <div class="step-badge-num">1</div>
-          <h3 class="step-title">Dapatkan Pakej Usahawan</h3>
-          <p class="step-desc">Pilih Pakej 10 Pek atau 20 Pek dan buat tempahan melalui borang selamat OnPay.</p>
+          <h3 class="step-title">Dapatkan Preorder Usahawan</h3>
+          <p class="step-desc">Pilih Pakej 10 Paket atau 20 Paket dan buat tempahan melalui borang selamat OnPay.</p>
         </div>
 
         <div class="step-card reveal d-2">
@@ -870,14 +1000,15 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Alhamdulillah 20 pek pertama habis dalam 3 hari je di surau &amp; WhatsApp!"</h4>
+            <h4 class="review-headline">"Alhamdulillah 20 paket pertama habis dalam 3 hari je di surau &amp; WhatsApp!"
+            </h4>
             <p class="review-body">
-              "Mulanya risau takut susah nak jual. Bila pek sampai, kualiti packaging matte black gold memang nampak
-              mewah. Saya bawa sampel ke surau dan share dalam grup WhatsApp taman, terus habis 20 pek!"
+              "Mulanya risau takut susah nak jual. Bila paket sampai, kualiti packaging matte black gold memang nampak
+              mewah. Saya bawa sampel ke surau dan share dalam grup WhatsApp taman, terus habis 20 paket!"
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Pakej 20 Pek</span>
+            <span class="review-metric-pill">Pakej 20 Paket</span>
             <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
@@ -892,7 +1023,8 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Bahan marketing poster &amp; video sangat membantu, tak pening nak design!"</h4>
+            <h4 class="review-headline">"Bahan marketing poster &amp; video sangat membantu, tak pening nak design!"
+            </h4>
             <p class="review-body">
               "Kelebihan paling besar pakej ni ialah bahan marketing percuma. Saya cuma download video dan poster, lepas
               tu post kat Status WhatsApp dan Facebook. Kawan-kawan ofis terus PM nak tempah!"
@@ -914,7 +1046,7 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Pelanggan puji kurma lembut, manis semula jadi dan pek ziplock senang bawa."
+            <h4 class="review-headline">"Pelanggan puji kurma lembut, manis semula jadi dan paket ziplock senang bawa."
             </h4>
             <p class="review-body">
               "Bukan saja berbaloi, tapi kualiti kurma Ajwa ni memang gred premium. Buahnya bersih, isi tebal dan tak
@@ -944,7 +1076,7 @@
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Total: 60 Pek Terjual</span>
+            <span class="review-metric-pill">Total: 60 Paket Terjual</span>
             <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
@@ -959,7 +1091,8 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Penghantaran pantas, kotak bungkusan tebal dan pek sampai kemas sempurna!"</h4>
+            <h4 class="review-headline">"Penghantaran pantas, kotak bungkusan tebal dan paket sampai kemas sempurna!"
+            </h4>
             <p class="review-body">
               "Order hari Selasa, hari Khamis dah sampai depan pintu rumah. Kotak bungkusan sangat kemas dengan bubble
               wrap tebal. Servis team Irfan Khairi Sdn Bhd memang terbaik!"
@@ -981,14 +1114,14 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Bermula 10 pek dulu, terus naikkan ke 20 pek bila dah confident jual!"</h4>
+            <h4 class="review-headline">"Bermula 10 paket dulu, terus naikkan ke 20 paket bila dah confident jual!"</h4>
             <p class="review-body">
-              "Bagi pemuda macam saya yang nak cari side income halal, ada pilihan 10 pek ni sangat membantu. Lepas
-              habis dan pusing modal, terus ambil 20 pek. Margin untung memang padu!"
+              "Bagi pemuda macam saya yang nak cari side income halal, ada pilihan 10 paket ni sangat membantu. Lepas
+              habis dan pusing modal, terus ambil 20 paket. Margin untung memang padu!"
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Pakej 10 → 20 Pek</span>
+            <span class="review-metric-pill">Pakej 10 → 20 Paket</span>
             <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
@@ -1003,7 +1136,7 @@
         </div>
         <div class="trust-item">
           <div class="trust-item-val">2 Pakej</div>
-          <div class="trust-item-lbl">10 Pek &amp; 20 Pek Tersedia</div>
+          <div class="trust-item-lbl">10 Paket &amp; 20 Paket Tersedia</div>
         </div>
         <div class="trust-item">
           <div class="trust-item-val">100% Percuma</div>
@@ -1018,7 +1151,7 @@
       <div class="text-center reveal d-3" style="margin-top: 45px;">
         <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow"
           style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;">
-          <span>💼 Dapatkan Pakej Usahawan →</span>
+          <span>💼 Dapatkan Preorder Usahawan →</span>
         </a>
       </div>
 
@@ -1045,12 +1178,14 @@
 
         <div class="faq-item active">
           <button class="faq-question" aria-expanded="true">
-            <span>Apakah perbezaan antara Pakej 10 Pek dan Pakej 20 Pek?</span>
+            <span>Apakah perbezaan antara Pakej 10 Paket dan Pakej 20 Paket?</span>
             <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Pakej 10 Pek sesuai untuk pemula yang ingin mencuba dahulu dengan modal yang lebih rendah. Pakej 20 Pek
-              memberikan lebih banyak stok untuk dijual dan lazimnya memberikan margin yang lebih baik per pek. Kedua-dua
+            <p>Pakej 10 Paket sesuai untuk pemula yang ingin mencuba dahulu dengan modal yang lebih rendah. Pakej 20
+              Paket
+              memberikan lebih banyak stok untuk dijual dan lazimnya memberikan margin yang lebih baik per paket.
+              Kedua-dua
               pakej termasuk bahan marketing percuma yang sama.</p>
           </div>
         </div>
@@ -1061,8 +1196,9 @@
             <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Modal minimum bermula dengan <strong>Pakej 10 Pek</strong>. Anda tidak perlu mengambil stok beratus-ratus
-              pek untuk memulakan perniagaan Ajwa of Madinah.</p>
+            <p>Modal minimum bermula dengan <strong>Pakej 10 Paket</strong>. Anda tidak perlu mengambil stok
+              beratus-ratus
+              paket untuk memulakan perniagaan Ajwa of Madinah.</p>
           </div>
         </div>
 
@@ -1083,7 +1219,7 @@
             <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Kurma Ajwa of Madinah dibungkus dalam pek zipper kedap udara gred makanan dan mempunyai jangka hayat
+            <p>Kurma Ajwa of Madinah dibungkus dalam paket zipper kedap udara gred makanan dan mempunyai jangka hayat
               sehingga <strong>12 bulan</strong> apabila disimpan di tempat sejuk atau peti sejuk.</p>
           </div>
         </div>
@@ -1119,7 +1255,7 @@
           </button>
           <div class="faq-answer">
             <p>Tempahan dibuat melalui gerbang pembayaran rasmi <strong>OnPay</strong> yang selamat. Menerima FPX
-              (Online Banking), Kad Kredit dan Kad Debit. Klik mana-mana butang "Dapatkan Pakej Ini" untuk ke halaman
+              (Online Banking), Kad Kredit dan Kad Debit. Klik mana-mana butang "Dapatkan Preorder Ini" untuk ke halaman
               tempahan.</p>
           </div>
         </div>
@@ -1133,7 +1269,7 @@
   <!-- ═══════════════════════════════════════════════════════════
      FINAL CTA — CLOSING SECTION
      ═══════════════════════════════════════════════════════════ -->
-  <section id="tempah" class="section-final-cta" aria-label="Dapatkan Pakej Usahawan Ajwa of Madinah">
+  <section id="tempah" class="section-final-cta" aria-label="Dapatkan Preorder Usahawan Ajwa of Madinah">
     <div class="container">
 
       <div class="final-cta-box reveal d-1">
@@ -1145,7 +1281,7 @@
         </h2>
 
         <p class="final-cta-desc">
-          Pilih <strong>Pakej 10 Pek</strong> atau <strong>Pakej 20 Pek</strong> mengikut kemampuan anda.
+          Pilih <strong>Pakej 10 Paket</strong> atau <strong>Pakej 20 Paket</strong> mengikut kemampuan anda.
           Setiap pakej termasuk bahan pemasaran percuma yang membolehkan anda mula berniaga dengan segera.
         </p>
 
@@ -1166,14 +1302,9 @@
 
         <!-- Buttons -->
         <div class="final-cta-buttons">
-          <a href="#" data-onpay target="_blank" rel="noopener noreferrer"
-            class="btn-gold btn-large-cta hero-btn-glow" id="final-cta-btn">
+          <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold btn-large-cta hero-btn-glow"
+            id="final-cta-btn">
             <span>💼 DAPATKAN PAKEJ USAHAWAN →</span>
-          </a>
-
-          <a href="https://wa.me/601116238805?text=Salam%2C%20saya%20berminat%20untuk%20mendapatkan%20Pakej%20Usahawan%20Kurma%20Ajwa%20of%20Madinah."
-            target="_blank" rel="noopener noreferrer" class="btn-whatsapp" id="final-whatsapp-btn">
-            <span>💬 Tanya di WhatsApp Dahulu</span>
           </a>
         </div>
 
@@ -1205,10 +1336,11 @@
     aria-label="Bar Tempahan Pantas Pakej Usahawan">
     <div class="reseller-sticky-info">
       <div class="sticky-pack-badge">Pakej Usahawan Ajwa of Madinah</div>
-      <div class="sticky-pack-sub">10 Pek &amp; 20 Pek Tersedia · Poster &amp; Video Marketing PERCUMA</div>
+      <div class="sticky-pack-sub">10 Paket &amp; 20 Paket Tersedia · Poster &amp; Video Marketing PERCUMA</div>
     </div>
-    <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold" style="padding: 10px 22px; font-size: 0.92rem; white-space: nowrap;">
-      <span>💼 Dapatkan Pakej</span>
+    <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold"
+      style="padding: 10px 22px; font-size: 0.92rem; white-space: nowrap;">
+      <span>💼 Dapatkan Preorder</span>
       <span>→</span>
     </a>
   </div>
@@ -1263,7 +1395,7 @@
             </li>
             <li>
               <span class="fl-icon">📦</span>
-              <a href="#pakej-harga">Pakej 10 Pek &amp; 20 Pek</a>
+              <a href="#pakej-harga">Pakej 10 Paket &amp; 20 Paket</a>
             </li>
             <li>
               <span class="fl-icon">🛒</span>
