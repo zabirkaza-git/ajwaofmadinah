@@ -123,11 +123,11 @@
               '<span class="pu-orig">RM' + pkg.originalPrice + '</span>' +
               '<span class="pu-promo">RM' + pkg.promoPrice + '</span>' +
             '</div>' +
-            '<div class="pu-savings">Jimat RM' + savings + '</div>';
+            '<div class="pu-savings">✦ Jimat RM' + savings + '</div>';
         } else {
           priceHTML =
             '<div class="pu-price-row">' +
-              '<span class="pu-promo">RM' + pkg.originalPrice + '</span>' +
+              '<span class="pu-promo solo">RM' + pkg.originalPrice + '</span>' +
             '</div>';
         }
 
@@ -175,14 +175,14 @@
   <style>
     /* ── Pakej Usahawan — Kad Harga Inline Styles ──────────────── */
     .pu-cards-section {
-      background: var(--green-800);
+      background: #0a2318;
       padding-block: var(--section-py, 96px);
       position: relative; overflow: hidden;
     }
     .pu-cards-section::before {
       content: ''; position: absolute; top: -200px; right: -200px;
       width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
       pointer-events: none;
     }
     .pu-cards-row {
@@ -192,121 +192,135 @@
       margin-top: 56px;
       align-items: start;
     }
-    /* Card */
+    /* Card — solid dark green like reference */
     .pu-card {
-      border: 1px solid rgba(201,168,76,.28);
-      border-radius: 24px;
-      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(201,168,76,.22);
+      border-radius: 20px;
+      background: #0f3322;
       position: relative;
+      overflow: hidden;
       transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s, box-shadow .35s;
     }
     .pu-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(201,168,76,.55);
-      box-shadow: 0 16px 48px rgba(0,0,0,.30);
+      border-color: rgba(201,168,76,.50);
+      box-shadow: 0 20px 56px rgba(0,0,0,.40);
     }
     .pu-card--featured {
-      border-color: var(--gold-400, #c9a84c);
-      background: rgba(201,168,76,.10);
-      box-shadow: 0 0 0 1px var(--gold-400, #c9a84c), 0 8px 40px rgba(201,168,76,.20);
+      border-color: #c9a84c;
+      background: #0f3322;
+      box-shadow: 0 0 0 2px #c9a84c, 0 12px 48px rgba(201,168,76,.20);
     }
     /* Ribbon */
     .pu-ribbon {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--gold-400, #c9a84c); color: #041b14;
-      font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-      padding: 5px 22px; border-radius: 100px; white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(201,168,76,.35);
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: #c9a84c; color: #041b14;
+      font-size: .68rem; font-weight: 800; letter-spacing: .10em; text-transform: uppercase;
+      padding: 6px 28px; border-radius: 0 0 14px 14px; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(201,168,76,.40);
     }
     /* Card body */
-    .pu-card-body { padding: 42px 36px 36px; }
-    .pu-card--featured .pu-card-body { padding-top: 50px; }
+    .pu-card-body { padding: 40px 36px 36px; }
+    .pu-card--featured .pu-card-body { padding-top: 52px; }
 
     /* Labels */
     .pu-type {
-      font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--gold-400, #c9a84c); margin-bottom: 10px;
+      font-size: .68rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(201,168,76,.75); margin-bottom: 8px;
     }
     .pu-qty {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.5rem; font-weight: 700; color: #fff;
-      line-height: 1.25; margin-bottom: 24px;
+      font-size: 1.45rem; font-weight: 700; color: #fff;
+      line-height: 1.25; margin-bottom: 22px;
+      text-transform: uppercase; letter-spacing: .02em;
     }
     /* Price block */
     .pu-price-block { margin-bottom: 24px; }
     .pu-promo-badge {
       display: inline-block;
-      font-size: .7rem; font-weight: 800; letter-spacing: .10em; text-transform: uppercase;
-      color: var(--gold-400, #c9a84c);
+      font-size: .65rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: #c9a84c;
       background: rgba(201,168,76,.12); padding: 3px 12px; border-radius: 100px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .pu-price-row {
-      display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 4px;
     }
+    /* Harga asal — coretan jelas, besar */
     .pu-orig {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.5rem; font-weight: 600;
-      color: rgba(255,255,255,.30);
+      font-size: 2.4rem; font-weight: 700;
+      color: rgba(255,255,255,.38);
       text-decoration: line-through;
+      text-decoration-color: rgba(220,60,60,.80);
+      text-decoration-thickness: 3px;
     }
+    /* Harga promosi — gold, lebih besar */
     .pu-promo {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3rem; font-weight: 700;
-      color: var(--gold-400, #c9a84c); line-height: 1;
+      font-size: 2.4rem; font-weight: 700;
+      color: #c9a84c; line-height: 1;
+    }
+    /* Harga asal sahaja (tanpa promo) — size lebih besar */
+    .pu-promo.solo {
+      font-size: 3rem;
     }
     .pu-savings {
       display: inline-block;
-      font-size: .88rem; font-weight: 700;
-      color: rgba(201,168,76,.85);
-      background: rgba(201,168,76,.10); padding: 3px 14px;
-      border-radius: 100px; margin-top: 6px;
+      font-size: .82rem; font-weight: 700;
+      color: #c9a84c;
+      background: rgba(201,168,76,.12); padding: 4px 16px;
+      border-radius: 100px; margin-top: 8px;
     }
     /* Divider */
-    .pu-divider { height: 1px; background: rgba(255,255,255,.10); margin-bottom: 22px; }
+    .pu-divider { height: 1px; background: rgba(255,255,255,.10); margin: 22px 0; }
     /* Feature list */
     .pu-features {
       list-style: none; padding: 0; margin: 0 0 30px;
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex; flex-direction: column; gap: 12px;
     }
     .pu-features li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: .88rem; color: rgba(255,255,255,.78); line-height: 1.45;
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .875rem; color: rgba(255,255,255,.75); line-height: 1.45;
     }
     .pu-check {
       flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(201,168,76,.15);
+      background: rgba(201,168,76,.18);
       display: flex; align-items: center; justify-content: center;
-      font-size: .7rem; color: var(--gold-400, #c9a84c); font-weight: 700;
+      font-size: .72rem; color: #c9a84c; font-weight: 700;
+      margin-top: 1px;
     }
     /* CTA Button */
     .pu-cta-btn {
       display: flex; align-items: center; justify-content: center;
-      width: 100%; padding: 16px 24px; border-radius: 100px;
-      font-size: .95rem; font-weight: 800; letter-spacing: .04em;
-      background: var(--gold-400, #c9a84c); color: #041b14;
+      width: 100%; padding: 17px 24px; border-radius: 100px;
+      font-size: .92rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+      background: #c9a84c; color: #041b14;
       text-decoration: none;
-      transition: background .35s, transform .35s, box-shadow .35s;
-      box-shadow: 0 4px 20px rgba(201,168,76,.28);
+      transition: background .3s, transform .3s, box-shadow .3s;
+      box-shadow: 0 4px 20px rgba(201,168,76,.32);
     }
     .pu-cta-btn:hover {
-      background: var(--gold-500, #b8952f);
+      background: #b8952f;
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(201,168,76,.40);
+      box-shadow: 0 8px 32px rgba(201,168,76,.45);
+      color: #041b14;
     }
     /* Note below cards */
     .pu-note {
       text-align: center; margin-top: 28px;
-      font-size: .84rem; color: rgba(255,255,255,.40);
+      font-size: .84rem; color: rgba(255,255,255,.38);
     }
-    .pu-note strong { color: rgba(255,255,255,.65); }
+    .pu-note strong { color: rgba(255,255,255,.60); }
 
     /* Mobile */
     @media (max-width: 768px) {
       .pu-cards-row { grid-template-columns: 1fr; gap: 36px; }
-      .pu-card-body { padding: 40px 24px 30px; }
-      .pu-card--featured .pu-card-body { padding-top: 48px; }
-      .pu-promo { font-size: 2.4rem; }
+      .pu-card-body { padding: 38px 22px 28px; }
+      .pu-card--featured .pu-card-body { padding-top: 50px; }
+      .pu-orig { font-size: 1.8rem; }
+      .pu-promo { font-size: 1.8rem; }
+      .pu-promo.solo { font-size: 2.4rem; }
     }
     @media (max-width: 480px) {
       .pu-cards-row { grid-template-columns: 1fr; }
@@ -351,8 +365,8 @@
           <li><a href="#testimoni">Testimoni</a></li>
           <li><a href="#soalan">FAQ</a></li>
           <li class="nav-cta">
-            <a href="#pakej-harga" data-onpay id="nav-cta-btn" class="btn-gold-nav"
-              aria-label="Dapatkan Pakej Usahawan">
+            <a href="#" data-onpay id="nav-cta-btn" class="btn-gold-nav"
+              target="_blank" rel="noopener noreferrer" aria-label="Dapatkan Pakej Usahawan">
               <span>💼 Dapatkan Pakej</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -378,7 +392,7 @@
       <a href="#bonus" class="mobile-link">Bonus Percuma</a>
       <a href="#testimoni" class="mobile-link">Testimoni</a>
       <a href="#soalan" class="mobile-link">FAQ</a>
-      <a href="#pakej-harga" class="btn-gold mobile-cta-btn" id="mobile-cta-btn">
+      <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold mobile-cta-btn" id="mobile-cta-btn">
         💼 Dapatkan Pakej Usahawan
       </a>
     </div>
@@ -431,7 +445,7 @@
           </div>
 
           <div class="hero-cta-row reveal d-5">
-            <a href="#pakej-harga" class="btn-gold hero-btn-glow" id="hero-cta-main">
+            <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow" id="hero-cta-main">
               <span class="btn-icon">💼</span>
               <span>DAPATKAN PAKEJ USAHAWAN →</span>
             </a>
@@ -600,8 +614,8 @@
         </div>
 
         <div class="text-center">
-          <a href="#pakej-harga" class="btn-gold btn-large-cta">
-            <span>💼 LIHAT PAKEJ &amp; HARGA →</span>
+          <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold btn-large-cta">
+            <span>💼 DAPATKAN PAKEJ SEKARANG →</span>
           </a>
         </div>
 
@@ -987,7 +1001,7 @@
       </div>
 
       <div class="text-center reveal d-3" style="margin-top: 45px;">
-        <a href="#pakej-harga" class="btn-gold hero-btn-glow"
+        <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow"
           style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;">
           <span>💼 Dapatkan Pakej Usahawan →</span>
         </a>
@@ -1137,9 +1151,9 @@
 
         <!-- Buttons -->
         <div class="final-cta-buttons">
-          <a href="#pakej-harga"
+          <a href="#" data-onpay target="_blank" rel="noopener noreferrer"
             class="btn-gold btn-large-cta hero-btn-glow" id="final-cta-btn">
-            <span>💼 PILIH PAKEJ USAHAWAN →</span>
+            <span>💼 DAPATKAN PAKEJ USAHAWAN →</span>
           </a>
 
           <a href="https://wa.me/601116238805?text=Salam%2C%20saya%20berminat%20untuk%20mendapatkan%20Pakej%20Usahawan%20Kurma%20Ajwa%20of%20Madinah."
@@ -1178,7 +1192,7 @@
       <div class="sticky-pack-badge">Pakej Usahawan Ajwa of Madinah</div>
       <div class="sticky-pack-sub">10 Pek &amp; 20 Pek Tersedia · Poster &amp; Video Marketing PERCUMA</div>
     </div>
-    <a href="#pakej-harga" class="btn-gold" style="padding: 10px 22px; font-size: 0.92rem; white-space: nowrap;">
+    <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold" style="padding: 10px 22px; font-size: 0.92rem; white-space: nowrap;">
       <span>💼 Dapatkan Pakej</span>
       <span>→</span>
     </a>
