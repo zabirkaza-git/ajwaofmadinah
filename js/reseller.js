@@ -1,6 +1,6 @@
 /* ============================================================
    AJWA OF MADINAH — reseller.js
-   Interactive Profit Calculator, Sticky Bars, FAQ, Scroll Reveal
+   Sticky Bars, Mobile Nav, Smooth Scroll, FAQ, Scroll Reveal
    Irfan Khairi Sdn Bhd © 2026
    ============================================================ */
 
@@ -80,44 +80,7 @@
     });
   });
 
-  /* ── 4. Interactive Profit Calculator ────────────────────── */
-  const presetButtons = document.querySelectorAll('.calc-preset-btn');
-  const resPacksEl = document.getElementById('calc-res-packs');
-  const resModalEl = document.getElementById('calc-res-modal');
-  const resJualanEl = document.getElementById('calc-res-jualan');
-  const resUntungEl = document.getElementById('calc-res-untung');
-
-  const COST_PER_PACK = 17; // RM17
-  const PRICE_PER_PACK = 30; // RM30
-  const PACKS_PER_BUNDLE = 20; // 20 pek per bundle
-
-  function updateCalculator(bundleCount) {
-    const totalPacks = bundleCount * PACKS_PER_BUNDLE;
-    const totalModal = totalPacks * COST_PER_PACK; // e.g. 20 * 17 = 340
-    const totalJualan = totalPacks * PRICE_PER_PACK; // e.g. 20 * 30 = 600
-    const totalUntung = totalJualan - totalModal; // e.g. 600 - 340 = 260
-
-    if (resPacksEl) resPacksEl.textContent = totalPacks.toLocaleString('ms-MY') + ' Pek';
-    if (resModalEl) resModalEl.textContent = 'RM ' + totalModal.toLocaleString('ms-MY');
-    if (resJualanEl) resJualanEl.textContent = 'RM ' + totalJualan.toLocaleString('ms-MY');
-    if (resUntungEl) resUntungEl.textContent = '+RM ' + totalUntung.toLocaleString('ms-MY');
-  }
-
-  if (presetButtons.length > 0) {
-    presetButtons.forEach(btn => {
-      btn.addEventListener('click', function () {
-        presetButtons.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const bundles = parseInt(this.getAttribute('data-bundles'), 10) || 1;
-        updateCalculator(bundles);
-      });
-    });
-
-    // Initialize default (1 bundle = 20 packs)
-    updateCalculator(1);
-  }
-
-  /* ── 5. FAQ Accordion ───────────────────────────────────── */
+  /* ── 4. FAQ Accordion ───────────────────────────────────── */
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const questionBtn = item.querySelector('.faq-question');
@@ -139,7 +102,7 @@
     }
   });
 
-  /* ── 6. Scroll Reveal Observer ──────────────────────────── */
+  /* ── 5. Scroll Reveal Observer ──────────────────────────── */
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver(
