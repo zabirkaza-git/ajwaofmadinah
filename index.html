@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pakej Usahawan Ajwa of Madinah | Kurma Ajwa Premium dari Madinah</title>
+  <title>Pakej Usahawan Ajwa of Madinah | Kurma Premium dari Madinah Al-Munawwarah</title>
   <meta name="description"
-    content="Sertai Pakej Usahawan Ajwa of Madinah — kurma premium berkualiti tinggi dalam pek ziplock 200g, diimport terus dari Madinah oleh Irfan Khairi Sdn Bhd. Pakej 10 pek dan 20 pek tersedia." />
+    content="Sertai Pakej Usahawan Ajwa of Madinah. Pilih Pakej 10 Paket atau 20 Paket kurma premium berkualiti tinggi dari Madinah, dengan poster dan video marketing PERCUMA." />
   <meta name="keywords"
-    content="pakej usahawan ajwa, kurma ajwa, ajwa madinah, kurma premium, irfan khairi, pakej kurma, bisnes kurma" />
-  <meta property="og:title" content="Pakej Usahawan Ajwa of Madinah | Kurma Premium dari Madinah" />
+    content="pakej usahawan kurma ajwa, bisnes kurma, ajwa madinah, irfan khairi, jana pendapatan sampingan" />
+  <meta property="og:title" content="Pakej Usahawan Kurma Ajwa of Madinah — 10 Paket atau 20 Paket" />
   <meta property="og:description"
-    content="Sertai Pakej Usahawan Ajwa of Madinah. Kurma premium dalam pek ziplock 200g, diimport terus dari Madinah Al-Munawwarah." />
+    content="Mulakan bisnes kurma premium tanpa pening fikir produk & content. Lengkap poster dan video marketing PERCUMA." />
   <meta property="og:image" content="assets/sample-3-removebg-preview.png" />
   <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://www.ajwaofmadinah.com/" />
+  <link rel="canonical" href="https://www.ajwaofmadinah.com/index.html" />
 
-  <!-- Favicon -->
+  <!-- Favicon — Ajwa of Madinah -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=3" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3" />
   <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png?v=3" />
@@ -27,51 +27,497 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
     rel="stylesheet">
 
-  <!-- Config MESTI dimuatkan sebelum style dan script lain -->
-  <script src="js/config.js"></script>
+  <!-- ═══════════════════════════════════════════════════════════
+       ✏️  EDIT HARGA PAKEJ DI SINI
+       ═══════════════════════════════════════════════════════════
+       Untuk tukar harga promosi, cari "promoPrice" di bawah dan
+       ubah nilai tersebut sahaja. Halaman akan kemas kini secara
+       automatik apabila promosi aktif.
+
+       Contoh tukar harga 10 paket: promoPrice: 170 → promoPrice: 160
+       Contoh tukar harga 20 paket: promoPrice: 300 → promoPrice: 280
+
+       Untuk NYAHAKTIFKAN promosi sepenuhnya (walaupun dalam tempoh):
+         tukar  promoEnabled: true  kepada  promoEnabled: false
+       ═══════════════════════════════════════════════════════════ -->
+  <script>
+    const PAKEJ_CONFIG = {
+
+      /* ── Pautan OnPay — tukar di sini jika URL berubah ─────── */
+      onpayUrl: "https://irfankhairi.onpay.my/order/form/ajwaofmadinah",
+
+      /* ── Kawalan Promosi ─────────────────────────────────────
+         promoEnabled : true  = promosi aktif (bergantung pada tarikh)
+                        false = promosi dimatikan sepenuhnya
+         promoStart   : Tarikh mula (YYYY-MM-DD) — inklusif
+         promoEnd     : Tarikh tamat (YYYY-MM-DD) — inklusif
+         Zon waktu: Malaysia (Asia/Kuala_Lumpur)
+      ────────────────────────────────────────────────────────── */
+      promoEnabled: true,
+      promoStart: "2026-10-29",   /* ✏️ Tukar jika perlu */
+      promoEnd: "2026-11-15",   /* ✏️ Tukar jika perlu */
+
+      /* ── Pakej & Harga ──────────────────────────────────────
+         ✏️  TUKAR "promoPrice" SAHAJA untuk harga promosi baharu.
+         "savings" dikira AUTOMATIK — tidak perlu diedit.
+         "originalPrice" ialah harga asal (tanpa promosi).
+      ────────────────────────────────────────────────────────── */
+      packages: [
+        {
+          id: "paket-10",
+          name: "Pakej Usahawan 10 Paket",
+          quantity: 10,
+          originalPrice: 200,   /* RM200 — harga asal */
+          promoPrice: 170    /* ✏️ Tukar ini untuk harga promosi 10 paket */
+        },
+        {
+          id: "paket-20",
+          name: "Pakej Usahawan 20 Paket",
+          quantity: 20,
+          originalPrice: 340,   /* RM340 — harga asal */
+          promoPrice: 300    /* ✏️ Tukar ini untuk harga promosi 20 paket */
+        }
+      ]
+    };
+
+    /* ════════════════════════════════════════════════════════
+       FUNGSI LOGIK PROMOSI — JANGAN EDIT BAHAGIAN INI
+       ════════════════════════════════════════════════════════ */
+
+    /** Semak sama ada promosi aktif hari ini (zon waktu Malaysia). */
+    function isPromoActive() {
+      if (!PAKEJ_CONFIG.promoEnabled) return false;
+      try {
+        var nowMY = new Date(
+          new Date().toLocaleString('en-US', { timeZone: 'Asia/Kuala_Lumpur' })
+        );
+        var today = new Date(nowMY.getFullYear(), nowMY.getMonth(), nowMY.getDate());
+        var s = PAKEJ_CONFIG.promoStart.split('-').map(Number);
+        var e = PAKEJ_CONFIG.promoEnd.split('-').map(Number);
+        var start = new Date(s[0], s[1] - 1, s[2]);
+        var end = new Date(e[0], e[1] - 1, e[2]);
+        return today >= start && today <= end;
+      } catch (err) { return false; }
+    }
+
+    /** Render kedua-dua kad pakej ke dalam #pakej-cards-wrapper */
+    function renderCards() {
+      var wrapper = document.getElementById('pakej-cards-wrapper');
+      if (!wrapper) return;
+      var promoOn = isPromoActive();
+      var html = '';
+
+      PAKEJ_CONFIG.packages.forEach(function (pkg, idx) {
+        var savings = pkg.originalPrice - pkg.promoPrice;
+        var isFeatured = idx === 1;
+
+        /* Blok harga */
+        var priceHTML;
+        if (promoOn) {
+          priceHTML =
+            '<div class="pu-promo-badge">HARGA PROMOSI</div>' +
+            '<div class="pu-price-row">' +
+            '<span class="pu-orig">RM' + pkg.originalPrice + '</span>' +
+            '<span class="pu-promo">RM' + pkg.promoPrice + '</span>' +
+            '</div>' +
+            '<div class="pu-savings">✦ Jimat RM' + savings + '</div>';
+        } else {
+          priceHTML =
+            '<div class="pu-price-row">' +
+            '<span class="pu-promo solo">RM' + pkg.originalPrice + '</span>' +
+            '</div>';
+        }
+
+        html +=
+          '<div class="pu-card' + (isFeatured ? ' pu-card--featured' : '') + '" id="' + pkg.id + '">' +
+          (isFeatured ? '<div class="pu-ribbon">PALING POPULAR</div>' : '') +
+          '<div class="pu-card-body">' +
+          '<div class="pu-type">PAKEJ USAHAWAN</div>' +
+          '<h3 class="pu-qty">' + pkg.quantity + ' PAKET AJWA OF MADINAH</h3>' +
+          '<div class="pu-price-block">' + priceHTML + '</div>' +
+          '<div class="pu-divider"></div>' +
+          '<ul class="pu-features">' +
+          '<li><span class="pu-check">✓</span>' + pkg.quantity + ' paket ziplock Kurma Ajwa 200g</li>' +
+          '<li><span class="pu-check">✓</span>100% Kurma Ajwa asli dari Madinah Al-Munawwarah</li>' +
+          '<li><span class="pu-check">✓</span>Paket ziplock matte black &amp; gold eksklusif</li>' +
+          '<li><span class="pu-check">✓</span>Poster &amp; video marketing PERCUMA</li>' +
+          '<li><span class="pu-check">✓</span>Diimport oleh Irfan Khairi Sdn Bhd</li>' +
+          '</ul>' +
+          '<a href="' + PAKEJ_CONFIG.onpayUrl + '" target="_blank" rel="noopener noreferrer"' +
+          ' class="pu-cta-btn" aria-label="Dapatkan ' + pkg.name + ' melalui OnPay">' +
+          'DAPATKAN PAKEJ INI →' +
+          '</a>' +
+          '</div>' +
+          '</div>';
+      });
+
+      wrapper.innerHTML = html;
+    }
+
+    /** Kemas kini semua [data-onpay] dengan URL dari konfigurasi */
+    function wireOnPayLinks() {
+      document.querySelectorAll('[data-onpay]').forEach(function (el) {
+        el.setAttribute('href', PAKEJ_CONFIG.onpayUrl);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      renderCards();
+      wireOnPayLinks();
+    });
+  </script>
 
   <link rel="stylesheet" href="css/style.css?v=40" />
+  <link rel="stylesheet" href="css/reseller.css?v=40" />
+  <style>
+    /* ── Pakej Usahawan — Kad Harga Inline Styles ──────────────── */
+    .pu-cards-section {
+      background: #0a2318;
+      padding-block: var(--section-py, 96px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pu-cards-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, .06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pu-cards-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    /* Card — solid dark green like reference */
+    .pu-card {
+      border: 1px solid rgba(201, 168, 76, .22);
+      border-radius: 20px;
+      background: #0f3322;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .35s, box-shadow .35s;
+    }
+
+    .pu-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 168, 76, .50);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, .40);
+    }
+
+    .pu-card--featured {
+      border-color: #c9a84c;
+      background: #0f3322;
+      box-shadow: 0 0 0 2px #c9a84c, 0 12px 48px rgba(201, 168, 76, .20);
+    }
+
+    /* Ribbon */
+    .pu-ribbon {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c9a84c;
+      color: #041b14;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      padding: 6px 28px;
+      border-radius: 0 0 14px 14px;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(201, 168, 76, .40);
+    }
+
+    /* Card body */
+    .pu-card-body {
+      padding: 40px 36px 36px;
+    }
+
+    .pu-card--featured .pu-card-body {
+      padding-top: 52px;
+    }
+
+    /* Labels */
+    .pu-type {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201, 168, 76, .75);
+      margin-bottom: 8px;
+    }
+
+    .pu-qty {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    /* Price block */
+    .pu-price-block {
+      margin-bottom: 24px;
+    }
+
+    .pu-promo-badge {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      background: rgba(201, 168, 76, .12);
+      padding: 3px 12px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+
+    .pu-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    /* Harga asal — dipotong dengan warna bersesuaian */
+    .pu-orig {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(201, 168, 76, .55);
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    /* Garisan potong harga — merah coral kemas dan elegan */
+    .pu-orig::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      top: 50%;
+      height: 3.5px;
+      background: #e63946;
+      border-radius: 2px;
+      transform: translateY(-50%) rotate(-7deg);
+      box-shadow: 0 2px 6px rgba(230, 57, 70, .45);
+    }
+
+    /* Harga promosi — gold cerah menonjol */
+    .pu-promo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffdb70;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(201, 168, 76, .25);
+    }
+
+    /* Harga asal sahaja (tanpa promo) — saiz standard */
+    .pu-promo.solo {
+      font-size: 3rem;
+      color: #c9a84c;
+    }
+
+    .pu-savings {
+      display: inline-block;
+      font-size: .82rem;
+      font-weight: 700;
+      color: #c9a84c;
+      background: rgba(201, 168, 76, .12);
+      padding: 4px 16px;
+      border-radius: 100px;
+      margin-top: 8px;
+    }
+
+    /* Divider */
+    .pu-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, .10);
+      margin: 22px 0;
+    }
+
+    /* Feature list */
+    .pu-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pu-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .875rem;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.45;
+    }
+
+    .pu-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .72rem;
+      color: #c9a84c;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    /* CTA Button */
+    .pu-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 17px 24px;
+      border-radius: 100px;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: #c9a84c;
+      color: #041b14;
+      text-decoration: none;
+      transition: background .3s, transform .3s, box-shadow .3s;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, .32);
+    }
+
+    .pu-cta-btn:hover {
+      background: #b8952f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201, 168, 76, .45);
+      color: #041b14;
+    }
+
+    /* Note below cards */
+    .pu-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .38);
+    }
+
+    .pu-note strong {
+      color: rgba(255, 255, 255, .60);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .pu-cards-row {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .pu-card-body {
+        padding: 38px 22px 28px;
+      }
+
+      .pu-card--featured .pu-card-body {
+        padding-top: 50px;
+      }
+
+      .pu-orig {
+        font-size: 1.7rem;
+      }
+
+      .pu-promo {
+        font-size: 2.3rem;
+      }
+
+      .pu-promo.solo {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pu-cards-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Top Announcement bar — hide IKSB logo on this page ─── */
+    .nav-logo-sep,
+    .nav-logo-iksb {
+      display: none !important;
+    }
+
+    /* ── Hero product image tweak ───────────────────────────── */
+    .reseller-hero-pack-img {
+      filter: drop-shadow(0 24px 60px rgba(0, 0, 0, .45));
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- ═══════════════════════════════════════════════════════════
-     HEADER / STICKY NAVIGATION
+     HEADER / NAVIGATION
      ═══════════════════════════════════════════════════════════ -->
-  <header id="navbar" role="banner">
+  <header id="navbar" class="navbar-reseller" role="banner">
+    <div class="top-announcement-bar" role="complementary" aria-label="Pakej Usahawan Ajwa of Madinah">
+      <span class="badge-live"><span class="live-dot" aria-hidden="true"></span> Dibuka Sekarang</span>
+      <span>Pakej Usahawan Ajwa of Madinah · <strong>10 Paket</strong> &amp; <strong>20 Paket</strong> Tersedia</span>
+    </div>
+
     <div class="container nav-inner">
 
-      <!-- Logo Ajwa of Madinah sahaja (IKSB dibuang) -->
+      <!-- Logo Ajwa of Madinah sahaja — IKSB tidak dipaparkan -->
       <div class="nav-logos">
-        <a href="#hero" class="nav-logo-link" aria-label="Ajwa of Madinah Utama">
+        <a href="index.html" class="nav-logo-link" aria-label="Ajwa of Madinah — Pakej Usahawan">
           <img src="assets/logo-ajwa.jpeg" alt="Ajwa of Madinah Logo" class="nav-logo-ajwa" />
         </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="nav-menu" aria-label="Navigasi Utama">
+      <nav class="nav-menu" aria-label="Navigasi Pakej Usahawan">
         <ul class="nav-links" id="nav-desktop">
-          <li><a href="#pengenalan">Pakej</a></li>
-          <li><a href="#keistimewaan">Keistimewaan</a></li>
-          <li><a href="#testimoni">Ulasan</a></li>
+          <li><a href="#kenapa">Kenapa Ajwa</a></li>
+          <li><a href="#pakej-harga">Pakej &amp; Harga</a></li>
+          <li><a href="#bonus">Bonus</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
           <li><a href="#soalan">FAQ</a></li>
           <li class="nav-cta">
-            <a href="#pakej-usahawan"
-              id="nav-cta-btn" class="btn-gold-nav" aria-label="Lihat Pakej Usahawan">
-              <span>💼 Lihat Pakej</span>
+            <a href="#" data-onpay id="nav-cta-btn" class="btn-gold-nav" target="_blank" rel="noopener noreferrer"
+              aria-label="Dapatkan Preorder Usahawan">
+              <span>💼 Dapatkan Preorder</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17l9.2-9.2M17 17V8H8" />
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
           </li>
         </ul>
       </nav>
 
-      <!-- Hamburger -->
+      <!-- Mobile Hamburger -->
       <button class="nav-hamburger" id="hamburger" aria-label="Buka menu navigasi" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -81,12 +527,14 @@
   <!-- Mobile Navigation Overlay -->
   <div class="nav-mobile" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu navigasi mudah alih">
     <div class="nav-mobile-inner">
-      <a href="#pengenalan" class="mobile-link">Pakej Usahawan</a>
-      <a href="#keistimewaan" class="mobile-link">Keistimewaan</a>
-      <a href="#testimoni" class="mobile-link">Ulasan</a>
+      <a href="#kenapa" class="mobile-link">Kenapa Ajwa</a>
+      <a href="#pakej-harga" class="mobile-link">Pakej &amp; Harga</a>
+      <a href="#bonus" class="mobile-link">Bonus Percuma</a>
+      <a href="#testimoni" class="mobile-link">Testimoni</a>
       <a href="#soalan" class="mobile-link">FAQ</a>
-      <a href="#pakej-usahawan" class="btn-gold mobile-cta-btn" id="mobile-cta-btn">
-        💼 Dapatkan Pakej Usahawan
+      <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold mobile-cta-btn"
+        id="mobile-cta-btn">
+        💼 Dapatkan Preorder Usahawan
       </a>
     </div>
   </div>
@@ -95,75 +543,133 @@
   <!-- ═══════════════════════════════════════════════════════════
      HERO SECTION
      ═══════════════════════════════════════════════════════════ -->
-  <section id="hero" aria-label="Pakej Usahawan Ajwa of Madinah">
+  <section id="hero-reseller" class="hero-reseller" aria-label="Pakej Usahawan Ajwa of Madinah">
     <div class="hero-bg-glow" aria-hidden="true"></div>
     <div class="hero-pattern" aria-hidden="true"></div>
 
-    <div class="container hero-inner">
+    <div class="container">
+      <div class="reseller-hero-grid">
 
-      <!-- Hero Content Left -->
-      <div class="hero-content">
-        <div class="hero-badge reveal d-1">
-          <span class="hero-badge-pulse" aria-hidden="true"></span>
-          <span>Pakej Usahawan Eksklusif — Terus dari Madinah</span>
+        <!-- Left: Copywriting -->
+        <div class="hero-content">
+          <div class="hero-pill-badge reveal d-1">
+            <span>✨ Program Usahawan Rasmi · Ajwa of Madinah</span>
+          </div>
+
+          <h1 class="hero-reseller-h1 reveal d-2">
+            Mulakan Bisnes<br />
+            Kurma Ajwa Premium<br />
+            <span class="gold-shimmer">Tanpa Perlu Pening</span><br />
+            Fikir Produk &amp; Content
+          </h1>
+
+          <p class="hero-reseller-sub reveal d-3">
+            Sertai <strong>Pakej Usahawan Ajwa of Madinah</strong>, kurma premium dari Madinah Al-Munawwarah
+            dalam paket ziplock eksklusif 200g. Pilih <strong>Pakej 10 Paket</strong> atau <strong>Pakej 20
+              Paket</strong>
+            dan mula berniaga hari ini. Poster &amp; video marketing <strong>PERCUMA</strong> disediakan!
+          </p>
+
+          <!-- Quick tags -->
+          <div class="hero-package-badge-row reveal d-4">
+            <div class="hero-package-tag">
+              <span>📦</span><span>2 Pilihan Pakej</span>
+            </div>
+            <div class="hero-package-tag">
+              <span>🌴</span><span>100% Ajwa <strong>Madinah</strong></span>
+            </div>
+            <div class="hero-package-tag">
+              <span>🎬</span><span>Poster &amp; Video <strong>PERCUMA</strong></span>
+            </div>
+            <div class="hero-package-tag">
+              <span>🔒</span><span>Bayaran Selamat <strong>OnPay</strong></span>
+            </div>
+          </div>
+
+          <div class="hero-cta-row reveal d-5">
+            <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow"
+              id="hero-cta-main">
+              <span class="btn-icon">💼</span>
+              <span>DAPATKAN PAKEJ USAHAWAN →</span>
+            </a>
+            <a href="#kenapa" class="btn-gold-outline" id="hero-cta-secondary">
+              Kenapa Ajwa of Madinah?
+            </a>
+          </div>
         </div>
 
-        <h1 class="hero-headline reveal d-2">
-          Mulakan bisnes kurma<br />
-          premium dengan <span class="gold-shimmer">Ajwa of Madinah.</span>
-        </h1>
+        <!-- Right: Product Visual -->
+        <div class="hero-visual reveal-right d-3">
+          <div class="hero-visual-card">
+            <div class="floating-badge floating-badge-top-left">
+              <span class="floating-badge-label">Kurma Ajwa</span>
+              <span class="floating-badge-val">Premium Madinah</span>
+            </div>
 
-        <p class="hero-sub reveal d-3">
-          <strong>Kurma Ajwa of Madinah</strong> — kurma premium berkualiti tinggi dalam pek ziplock 200g.
-          Diimport secara eksklusif oleh Irfan Khairi Sdn Bhd. Pilih pakej anda dan mula berniaga hari ini.
-        </p>
+            <img src="assets/sample-3-removebg-preview.png"
+              alt="Paket Ajwa of Madinah 200g — Kurma Premium Berkhasiat dari Madinah" class="reseller-hero-pack-img"
+              loading="eager" />
 
-        <div class="hero-cta-row reveal d-4">
-          <a href="#pakej-usahawan"
-            class="btn-gold hero-btn-glow" id="hero-pakej-btn"
-            aria-label="Lihat Pakej Usahawan Ajwa of Madinah">
-            <span class="btn-icon">💼</span>
-            <span>Dapatkan Pakej Usahawan</span>
-            <span class="btn-arrow">→</span>
-          </a>
-          <a href="#keistimewaan" class="btn-gold-outline" id="hero-keistimewaan-btn">
-            Lihat keistimewaan
-          </a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="hero-trust-bar reveal d-5">
-          <div class="trust-pill">
-            <span class="trust-icon">📦</span>
-            <span><strong>200g</strong> setiap pek</span>
-          </div>
-          <div class="trust-pill">
-            <span class="trust-icon">🕋</span>
-            <span><strong>100%</strong> Dari Madinah</span>
-          </div>
-          <div class="trust-pill">
-            <span class="trust-icon">🔒</span>
-            <span>Ziplock Praktikal</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hero Visual Right -->
-      <div class="hero-visual reveal-right d-2">
-        <div class="visual-halo" aria-hidden="true"></div>
-        <div class="visual-frame">
-          <img src="assets/sample-3-removebg-preview.png"
-            alt="Pek Premium Ajwa of Madinah 200g bersama buah kurma Ajwa hitam berkilat dari Madinah"
-            class="hero-main-img" loading="eager" />
-          <!-- Floating Card -->
-          <div class="floating-card hero-float-card">
-            <div class="float-icon">🕋</div>
-            <div class="float-info">
-              <strong>Gred Madinah Asli</strong>
-              <span>Pakej Usahawan Tersedia</span>
+            <div class="floating-badge floating-badge-bottom-right">
+              <span class="floating-badge-label">Poster &amp; Video</span>
+              <span class="floating-badge-val">PERCUMA ✓</span>
             </div>
           </div>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     KENAPA PILIH PAKEJ USAHAWAN AJWA OF MADINAH
+     ═══════════════════════════════════════════════════════════ -->
+  <section id="kenapa" class="section-why" aria-label="Kelebihan Pakej Usahawan Ajwa of Madinah">
+    <div class="container">
+
+      <div class="section-head text-center reveal d-1">
+        <div class="section-tag">Keistimewaan Produk &amp; Jenama</div>
+        <h2 class="section-title">Kenapa Pilih Pakej Usahawan Ajwa of Madinah?</h2>
+        <p class="section-desc">
+          Kurma Ajwa merupakan produk yang mudah diperkenalkan kepada pelbagai golongan pelanggan dan sesuai dijadikan
+          produk jualan sepanjang tahun, termasuk sebagai hadiah atau buah tangan.
+        </p>
+        <div class="gold-divider" aria-hidden="true"><span></span>
+          <div class="gold-diamond"></div><span></span>
+        </div>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal d-1">
+          <span class="why-icon" aria-hidden="true">🌴</span>
+          <h3 class="why-title">Permintaan Sepanjang Tahun</h3>
+          <p class="why-desc">Kurma Ajwa bukan sekadar produk bermusim. Ia amalan sunnah harian yang diminati sepanjang
+            365 hari — Ramadan mahupun hari biasa.</p>
+        </div>
+
+        <div class="why-card reveal d-2">
+          <span class="why-icon" aria-hidden="true">🎁</span>
+          <h3 class="why-title">Mudah Dijadikan Hadiah</h3>
+          <p class="why-desc">Reka bentuk bungkusan zipper 200g yang mewah dan premium menjadikan produk ini pilihan
+            utama untuk buah tangan, hadiah korporat, dan kenduri.</p>
+        </div>
+
+        <div class="why-card reveal d-3">
+          <span class="why-icon" aria-hidden="true">🎨</span>
+          <h3 class="why-title">Bahan Promosi Siap Disediakan</h3>
+          <p class="why-desc">Kami sediakan poster grafik resolusi tinggi dan video marketing profesional secara
+            percuma.
+            Tidak perlu pening hasilkan content sendiri.</p>
+        </div>
+
+        <div class="why-card reveal d-4">
+          <span class="why-icon" aria-hidden="true">🏛️</span>
+          <h3 class="why-title">Diimport Oleh Irfan Khairi Sdn Bhd</h3>
+          <p class="why-desc">Diimport terus dari Madinah Al-Munawwarah di bawah pengawasan syarikat ternama
+            <strong>Irfan Khairi Sdn Bhd</strong>. Keaslian dan kualiti gred premium terjamin.
+          </p>
+        </div>
       </div>
 
     </div>
@@ -171,218 +677,125 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
-     PENGENALAN PAKEJ USAHAWAN
+     APA YANG ANDA AKAN DAPAT
      ═══════════════════════════════════════════════════════════ -->
-  <section id="pengenalan" aria-label="Pengenalan Pakej Usahawan Ajwa of Madinah">
+  <section id="pakej-kandungan" class="section-package" aria-label="Kandungan Pakej Usahawan">
     <div class="container">
 
-      <div class="produk-inner">
+      <div class="section-head text-center reveal d-1">
+        <div class="section-tag">Pakej Lengkap Permulaan</div>
+        <h2 class="section-title">Apa Yang Anda Akan Dapat?</h2>
+        <p class="section-desc">
+          Semua yang anda perlukan untuk memulakan jualan dengan yakin dan pantas telah kami siapkan dalam satu pakej
+          lengkap:
+        </p>
+        <div class="gold-divider" aria-hidden="true"><span></span>
+          <div class="gold-diamond"></div><span></span>
+        </div>
+      </div>
 
-        <!-- Left: Product Image -->
-        <div class="produk-img-col reveal-left d-1">
-          <img src="assets/sample-2-removebg-preview.png"
-            alt="Pek Ajwa of Madinah 200g berdiri elegan — matte black dan gold" class="produk-main-img"
-            loading="lazy" />
-          <div class="produk-badge-float">Edisi Eksklusif</div>
+      <div class="package-master-card reveal d-2">
+
+        <div class="package-header-row">
+          <div>
+            <span class="package-main-badge">Pakej Usahawan (10 atau 20 Paket)</span>
+            <h3 class="package-title">Pakej Kurma Ajwa of Madinah 200g</h3>
+          </div>
+          <div class="package-pricing-badge">
+            <div class="package-pricing-label">Bermula dari</div>
+            <div class="package-price-number">RM 170</div>
+            <div class="package-price-sub">Semasa promosi aktif</div>
+          </div>
         </div>
 
-        <!-- Right: Package Details -->
-        <div class="produk-content-col reveal-right d-2">
-          <span class="section-tag">Pakej Usahawan</span>
-          <h2 class="section-title">
-            Berniaga kurma premium dengan <span class="gold-shimmer">modal yang berbaloi.</span>
-          </h2>
-          <p style="color: var(--text-muted); font-size: .98rem; line-height: 1.75; margin-bottom: 4px;">
-            Ajwa of Madinah hadir dengan Pakej Usahawan yang membolehkan anda mula berniaga kurma premium
-            dari Madinah Al-Munawwarah dengan mudah. Pilih pakej mengikut kemampuan dan sasaran anda.
-          </p>
+        <div class="package-items-grid">
+          <div class="package-item">
+            <div class="package-item-icon" aria-hidden="true">📦</div>
+            <div class="package-item-text">
+              <h4>Paket Ziplock Ajwa 200g Gred Premium</h4>
+              <p>Kurma Ajwa asli dari Madinah dalam bungkusan matte black &amp; gold kedap udara yang eksklusif.</p>
+            </div>
+          </div>
 
-          <ul class="produk-fact-list">
-            <li class="produk-fact">
-              <span class="fact-dot" aria-hidden="true"></span>
-              <span><strong>200g</strong> setiap pek — saiz ideal untuk jualan runcit</span>
-            </li>
-            <li class="produk-fact">
-              <span class="fact-dot" aria-hidden="true"></span>
-              <span><strong>Kurma Ajwa</strong> dari Madinah Al-Munawwarah — 100% asli</span>
-            </li>
-            <li class="produk-fact">
-              <span class="fact-dot" aria-hidden="true"></span>
-              <span>Pembungkusan <strong>ziplock kedap udara</strong> — mudah dijual dan dihantar</span>
-            </li>
-            <li class="produk-fact">
-              <span class="fact-dot" aria-hidden="true"></span>
-              <span>Poster &amp; video marketing <strong>disediakan percuma</strong></span>
-            </li>
-            <li class="produk-fact">
-              <span class="fact-dot" aria-hidden="true"></span>
-              <span>Diimport oleh <strong>Irfan Khairi Sdn Bhd</strong> — jenama yang dipercayai</span>
-            </li>
-          </ul>
+          <div class="package-item">
+            <div class="package-item-icon" aria-hidden="true">💰</div>
+            <div class="package-item-text">
+              <h4>2 Pilihan Pakej — 10 Paket atau 20 Paket</h4>
+              <p>Pilih mengikut kemampuan anda. Bermula kecil dengan 10 paket atau terus besar dengan 20 paket.</p>
+            </div>
+          </div>
 
-          <a href="#pakej-usahawan" class="btn-gold" id="pengenalan-cta-btn">
-            <span class="btn-icon">💼</span>
-            <span>Pilih Pakej Usahawan</span>
-            <span class="btn-arrow">→</span>
+          <div class="package-item highlight-bonus">
+            <div class="package-item-icon" aria-hidden="true">🎨</div>
+            <div class="package-item-text">
+              <h4>Poster Marketing HD <span style="color: var(--gold-400);">PERCUMA</span></h4>
+              <p>Koleksi poster rekaan grafik berkualiti tinggi untuk WhatsApp, TikTok, Facebook &amp; Instagram.</p>
+            </div>
+          </div>
+
+          <div class="package-item highlight-bonus">
+            <div class="package-item-icon" aria-hidden="true">🎬</div>
+            <div class="package-item-text">
+              <h4>Video Marketing <span style="color: var(--gold-400);">PERCUMA</span></h4>
+              <p>Video promosi format 9:16 (TikTok/Reels) siap dimuat naik. Tinggal letak nombor anda!</p>
+            </div>
+          </div>
+
+          <div class="package-item highlight-bonus">
+            <div class="package-item-icon" aria-hidden="true">📱</div>
+            <div class="package-item-text">
+              <h4>Skrip Jualan WhatsApp <span style="color: var(--gold-400);">PERCUMA</span></h4>
+              <p>Ayat jualan yang telah diuji untuk status WhatsApp, group &amp; membalas pertanyaan pembeli.</p>
+            </div>
+          </div>
+
+          <div class="package-item">
+            <div class="package-item-icon" aria-hidden="true">🚚</div>
+            <div class="package-item-text">
+              <h4>Penghantaran Seluruh Malaysia</h4>
+              <p>Dibungkus kemas dan dihantar ke seluruh Semenanjung Malaysia, Sabah &amp; Sarawak.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold btn-large-cta">
+            <span>💼 DAPATKAN PREORDER SEKARANG →</span>
           </a>
         </div>
 
       </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════════
-     KEISTIMEWAAN PRODUK
-     ═══════════════════════════════════════════════════════════ -->
-  <section id="keistimewaan" aria-label="Keistimewaan Ajwa of Madinah">
-    <div class="container">
-
-      <div class="section-head text-center">
-        <span class="section-tag dark reveal">Kenapa Pilih Kami</span>
-        <h2 class="section-title on-dark reveal d-1">
-          Keistimewaan <span class="gold-shimmer">Ajwa of Madinah</span>
-        </h2>
-        <p class="section-desc on-dark reveal d-2">
-          Setiap aspek produk direka dengan teliti untuk memberi pengalaman terbaik kepada anda dan pelanggan anda.
-        </p>
-      </div>
-
-      <div class="features-grid">
-
-        <article class="feature-card reveal d-1">
-          <span class="feature-num">01</span>
-          <div class="feature-icon-wrap" aria-hidden="true">🕋</div>
-          <h3>Dari Madinah</h3>
-          <p>Terus dari Madinah Al-Munawwarah — sumber asal kurma Ajwa yang telah dikenali sejak zaman Rasulullah SAW.
-          </p>
-        </article>
-
-        <article class="feature-card reveal d-2">
-          <span class="feature-num">02</span>
-          <div class="feature-icon-wrap" aria-hidden="true">🌴</div>
-          <h3>100% Kurma Ajwa</h3>
-          <p>Tanpa campuran, tanpa bahan tambahan. Kurma Ajwa tulen dipilih dengan teliti untuk memastikan kualiti
-            konsisten.</p>
-        </article>
-
-        <article class="feature-card reveal d-3">
-          <span class="feature-num">03</span>
-          <div class="feature-icon-wrap" aria-hidden="true">📦</div>
-          <h3>Pek 200g Premium</h3>
-          <p>Saiz 200g yang seimbang dalam pek matte black &amp; gold eksklusif — mudah dijual dan dihadiahkan.</p>
-        </article>
-
-        <article class="feature-card reveal d-4">
-          <span class="feature-num">04</span>
-          <div class="feature-icon-wrap" aria-hidden="true">🔒</div>
-          <h3>Ziplock Praktikal</h3>
-          <p>Zip kedap udara memastikan kurma kekal segar, lembut dan berkualiti walaupun selepas dibuka beberapa kali.
-          </p>
-        </article>
-
-        <article class="feature-card reveal d-5">
-          <span class="feature-num">05</span>
-          <div class="feature-icon-wrap" aria-hidden="true">📈</div>
-          <h3>Potensi Jualan Tinggi</h3>
-          <p>Produk sunnah dengan permintaan yang tinggi sepanjang tahun — sesuai untuk semua segmen pelanggan.</p>
-        </article>
-
-        <article class="feature-card reveal d-5">
-          <span class="feature-num">06</span>
-          <div class="feature-icon-wrap" aria-hidden="true">⭐</div>
-          <h3>Sokongan Pemasaran</h3>
-          <p>Poster dan video marketing percuma disediakan. Anda hanya perlu jual — kami bantu selebihnya.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════════
-     SUNNAH & HADITH SECTION
-     ═══════════════════════════════════════════════════════════ -->
-  <section id="sunnah" aria-label="Nilai Sunnah dan Hadis Kurma Ajwa">
-    <div class="container">
-
-      <div class="section-head text-center">
-        <span class="section-tag reveal">Nilai Spiritual &amp; Keberkatan</span>
-        <h2 class="section-title reveal d-1">
-          Kurma Ajwa dalam <span class="gold-shimmer">Sunnah &amp; Hadis</span>
-        </h2>
-        <div class="gold-divider reveal d-2">
-          <span></span>
-          <div class="gold-diamond"></div><span></span>
-        </div>
-        <p class="section-desc reveal d-2">
-          Kurma Ajwa bukan sekadar makanan — ia warisan agung yang dianjurkan secara khusus oleh Rasulullah SAW.
-        </p>
-      </div>
-
-      <!-- Hadith Quote Cards -->
-      <div class="hadith-cards-grid">
-
-        <article class="hadith-box reveal d-2">
-          <div class="quote-symbol" aria-hidden="true">"</div>
-          <blockquote class="hadith-quote">
-            <p>
-              "Sesiapa yang memakan tujuh biji kurma Ajwa pada waktu pagi, tidak akan memberi mudarat sebarang racun
-              mahupun sihir kepadanya pada hari tersebut."
-            </p>
-            <footer class="hadith-source">
-              <span class="source-badge">Sahih</span>
-              <cite>Hadis Riwayat al-Bukhari dan Muslim</cite>
-            </footer>
-          </blockquote>
-        </article>
-
-        <article class="hadith-box reveal d-3">
-          <div class="quote-symbol" aria-hidden="true">"</div>
-          <blockquote class="hadith-quote">
-            <p>
-              "Kurma Ajwa itu berasal daripada syurga, dan ia merupakan penawar daripada racun."
-            </p>
-            <footer class="hadith-source">
-              <span class="source-badge">Sahih</span>
-              <cite>HR Ahmad (8057), al-Tirmizi (2066) dan Ibnu Majah (3455)</cite>
-            </footer>
-          </blockquote>
-        </article>
-
-      </div>
 
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════════════════════════
-     PAKEJ USAHAWAN — KAD HARGA (DIKIRA DARI CONFIG)
+     PAKEJ & HARGA — KAD HARGA (RENDER DARI PAKEJ_CONFIG)
      ═══════════════════════════════════════════════════════════ -->
-  <section id="pakej-usahawan" aria-label="Pilihan Pakej Usahawan Ajwa of Madinah">
+  <section id="pakej-harga" class="pu-cards-section" aria-label="Pilihan Pakej dan Harga">
     <div class="container">
 
       <div class="section-head text-center">
         <span class="section-tag dark reveal">Pilih Pakej Anda</span>
         <h2 class="section-title on-dark reveal d-1">
-          Pakej <span class="gold-shimmer">Usahawan Ajwa of Madinah</span>
+          Pilihan <span class="gold-shimmer">Pakej &amp; Harga</span>
         </h2>
         <p class="section-desc on-dark reveal d-2">
           Dua pilihan pakej untuk bermula mengikut kemampuan anda. Semua pakej termasuk sokongan pemasaran percuma.
         </p>
       </div>
 
-      <!-- Kad pakej dirender secara automatik dari js/config.js -->
-      <div class="pakej-cards-row reveal d-2" id="pakej-cards-container">
-        <!-- Kad pakej akan diisi oleh renderPackageCards() dalam config.js -->
+      <!-- Kad pakej dirender secara automatik dari PAKEJ_CONFIG di atas -->
+      <div class="pu-cards-row reveal d-2" id="pakej-cards-wrapper">
         <noscript>
-          <p style="color:white; text-align:center; padding: 24px;">
+          <p style="color:white; text-align:center; padding:24px;">
             Sila aktifkan JavaScript untuk melihat pakej dan harga terkini.
           </p>
         </noscript>
       </div>
 
-      <p class="pakej-note reveal d-3">
+      <p class="pu-note reveal d-3">
         🔒 Pembayaran selamat melalui <strong>OnPay</strong> · Menerima FPX, Kad Kredit &amp; Kad Debit
       </p>
 
@@ -391,74 +804,183 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
-     MENGAPA PAKEJ USAHAWAN
+     KELEBIHAN PAKEJ USAHAWAN
      ═══════════════════════════════════════════════════════════ -->
-  <section id="mengapa" aria-label="Mengapa Sertai Pakej Usahawan">
+  <section class="section-benefits" aria-label="Kelebihan Pakej Usahawan">
     <div class="container">
 
-      <div class="section-head text-center">
-        <span class="section-tag reveal">Peluang Usahawan</span>
-        <h2 class="section-title reveal d-1">
-          Mengapa pilih <span class="gold-shimmer">Pakej Usahawan ini?</span>
-        </h2>
+      <div class="section-head text-center reveal d-1">
+        <div class="section-tag">Kelebihan Menguntungkan Anda</div>
+        <h2 class="section-title">Kelebihan Pakej Usahawan Ajwa</h2>
+        <p class="section-desc">Formula mudah kami dirangka khas untuk membolehkan sesiapa sahaja mula berniaga
+          dengan pantas dan selamat:</p>
+        <div class="gold-divider" aria-hidden="true"><span></span>
+          <div class="gold-diamond"></div><span></span>
+        </div>
       </div>
 
-      <div class="problem-grid">
+      <div class="benefit-cards-grid">
+        <div class="benefit-card reveal d-1">
+          <div class="benefit-num">01</div>
+          <h3 class="benefit-title">Bermula Kuantiti Kecil</h3>
+          <p class="benefit-desc">Boleh bermula dengan 10 paket sahaja. Risiko rendah, modal mampu milik, tiada tekanan
+            lambakan stok.</p>
+        </div>
 
-        <article class="problem-card reveal d-1">
-          <span class="problem-num">01</span>
-          <h3>Produk Sunnah Bernilai Tinggi</h3>
-          <p>Kurma Ajwa from Madinah adalah produk sunnah dengan permintaan tinggi sepanjang tahun, bukan hanya
-            Ramadan.</p>
-        </article>
+        <div class="benefit-card reveal d-2">
+          <div class="benefit-num">02</div>
+          <h3 class="benefit-title">Tak Pening Hasilkan Content</h3>
+          <p class="benefit-desc">Tidak perlu pening menghasilkan poster atau video sendiri. Bahan pemasaran siap sedia
+            terus disediakan.</p>
+        </div>
 
-        <article class="problem-card reveal d-2">
-          <span class="problem-num">02</span>
-          <h3>Pembungkusan Premium</h3>
-          <p>Pek matte black &amp; gold eksklusif menjadikan produk ini mudah dijual sebagai hadiah korporat, buah
-            tangan dan keperluan harian.</p>
-        </article>
+        <div class="benefit-card reveal d-3">
+          <div class="benefit-num">03</div>
+          <h3 class="benefit-title">Produk Sunnah Berkhasiat</h3>
+          <p class="benefit-desc">Kurma Ajwa disebut dalam hadis sahih Bukhari &amp; Muslim. Mudah dipromosikan kepada
+            semua lapisan masyarakat.</p>
+        </div>
 
-        <article class="problem-card reveal d-3">
-          <span class="problem-num">03</span>
-          <h3>Modal Rendah, Potensi Tinggi</h3>
-          <p>Mulakan dengan pakej 10 pek pada harga berpatutan. Tingkatkan ke pakej 20 pek apabila bisnes semakin
-            berkembang.</p>
-        </article>
-
-        <article class="problem-card reveal d-4">
-          <span class="problem-num">04</span>
-          <h3>Pemasaran Disediakan</h3>
-          <p>Poster dan video marketing percuma disediakan oleh Irfan Khairi Sdn Bhd. Anda boleh terus fokus kepada
-            jualan.</p>
-        </article>
-
+        <div class="benefit-card reveal d-4">
+          <div class="benefit-num">04</div>
+          <h3 class="benefit-title">Mula Promosi Lebih Cepat</h3>
+          <p class="benefit-desc">Gunakan bahan marketing yang disediakan untuk buat promosi segera di WhatsApp, TikTok,
+            Facebook &amp; Instagram.</p>
+        </div>
       </div>
+
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════════════════════════
-     ULASAN & TESTIMONI PELANGGAN
+     BONUS PERCUMA
      ═══════════════════════════════════════════════════════════ -->
-  <section id="testimoni" aria-label="Ulasan Pelanggan Ajwa of Madinah">
-    <div class="container text-center">
+  <section id="bonus" class="section-bonus" aria-label="Bonus Pemasaran Percuma">
+    <div class="container">
 
       <div class="section-head text-center reveal d-1">
-        <span class="section-tag">Ulasan &amp; Kepuasan Pelanggan</span>
-        <h2 class="section-title">
-          Apa Kata <span class="gold-shimmer">Pelanggan Kami</span>?
-        </h2>
+        <div class="section-tag">Nilai Tambah Eksklusif</div>
+        <h2 class="section-title">🎁 Bonus Khas Untuk Usahawan Kami</h2>
         <p class="section-desc">
-          Pengalaman sebenar keluarga Malaysia yang telah menikmati Kurma Ajwa of Madinah:
+          Apabila anda mendapatkan Pakej Usahawan hari ini, anda bukan sahaja mendapat stok fizikal kurma — anda juga
+          menerima kit pemasaran lengkap secara PERCUMA:
+        </p>
+        <div class="gold-divider" aria-hidden="true"><span></span>
+          <div class="gold-diamond"></div><span></span>
+        </div>
+      </div>
+
+      <div class="bonus-showcase-box reveal d-2">
+        <div class="bonus-cards-row">
+
+          <div class="bonus-box-card">
+            <span class="bonus-pill">Bonus #1 · Percuma</span>
+            <h4>🎨 Poster Marketing HD</h4>
+            <p>Koleksi grafik visual beresolusi tinggi dengan rekabentuk mewah dan elegan. Format Story dan Feed.</p>
+            <div class="bonus-tag-list">
+              <span class="bonus-tag">Format Story</span>
+              <span class="bonus-tag">Format Feed / Post</span>
+              <span class="bonus-tag">Resolusi HD</span>
+            </div>
+          </div>
+
+          <div class="bonus-box-card">
+            <span class="bonus-pill">Bonus #2 · Percuma</span>
+            <h4>🎬 Video Marketing Siap Edit</h4>
+            <p>Klip video pendek (Shorts/Reels/TikTok) yang memaparkan tekstur kurma &amp; pesanan hadis Sunnah.
+              Tinggal muat naik!</p>
+            <div class="bonus-tag-list">
+              <span class="bonus-tag">Format 9:16 Menegak</span>
+              <span class="bonus-tag">TikTok &amp; Reels Ready</span>
+              <span class="bonus-tag">Audio &amp; Text Siap</span>
+            </div>
+          </div>
+
+          <div class="bonus-box-card">
+            <span class="bonus-pill">Bonus #3 · Percuma</span>
+            <h4>📱 Skrip Jualan WhatsApp</h4>
+            <p>Ayat jualan yang telah diuji untuk terus dihantar ke group WhatsApp, status, dan membalas pertanyaan
+              pembeli.</p>
+            <div class="bonus-tag-list">
+              <span class="bonus-tag">Template Copywriting</span>
+              <span class="bonus-tag">Skrip Closing WA</span>
+              <span class="bonus-tag">Panduan Promosi</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     4 LANGKAH MUDAH
+     ═══════════════════════════════════════════════════════════ -->
+  <section class="section-steps" aria-label="Langkah Mula Berniaga">
+    <div class="container">
+
+      <div class="section-head text-center reveal d-1">
+        <div class="section-tag">Proses Pantas &amp; Mudah</div>
+        <h2 class="section-title">4 Langkah Mudah Memulakan Jualan</h2>
+        <p class="section-desc">Dari tempahan sehingga keuntungan pertama anda masuk ke akaun bank:</p>
+        <div class="gold-divider" aria-hidden="true"><span></span>
+          <div class="gold-diamond"></div><span></span>
+        </div>
+      </div>
+
+      <div class="steps-container">
+        <div class="step-card reveal d-1">
+          <div class="step-badge-num">1</div>
+          <h3 class="step-title">Dapatkan Preorder Usahawan</h3>
+          <p class="step-desc">Pilih Pakej 10 Paket atau 20 Paket dan buat tempahan melalui borang selamat OnPay.</p>
+        </div>
+
+        <div class="step-card reveal d-2">
+          <div class="step-badge-num">2</div>
+          <h3 class="step-title">Dapatkan Bahan Marketing</h3>
+          <p class="step-desc">Terima akses segera ke folder Google Drive mengandungi semua poster dan video promosi
+            percuma.</p>
+        </div>
+
+        <div class="step-card reveal d-3">
+          <div class="step-badge-num">3</div>
+          <h3 class="step-title">Muat Naik &amp; Buat Promosi</h3>
+          <p class="step-desc">Kongsikan poster &amp; video ke Status WhatsApp, Facebook, TikTok dan Instagram anda.</p>
+        </div>
+
+        <div class="step-card reveal d-4">
+          <div class="step-badge-num">4</div>
+          <h3 class="step-title">Terima Tempahan &amp; Untung</h3>
+          <p class="step-desc">Jual mengikut harga pasaran dan nikmati margin keuntungan yang berbaloi bagi setiap
+            pakej!</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+     TESTIMONI USAHAWAN
+     ═══════════════════════════════════════════════════════════ -->
+  <section id="testimoni" class="section-reviews" aria-label="Ulasan Usahawan Ajwa of Madinah">
+    <div class="container">
+
+      <div class="section-head text-center reveal d-1">
+        <div class="section-tag">Bukti &amp; Pengalaman Sebenar</div>
+        <h2 class="section-title">Apa Kata Usahawan Ajwa of Madinah?</h2>
+        <p class="section-desc">
+          Dengar bagaimana usahawan kami menjana keuntungan sampingan dan memulakan perniagaan kurma sunnah:
         </p>
 
-        <!-- Rating summary badge -->
-        <div class="reviews-rating-bar light-theme reveal d-2">
+        <div class="reviews-rating-bar reveal d-2">
           <span class="rating-stars" aria-label="5 daripada 5 bintang">★★★★★</span>
           <span class="rating-score">4.9 / 5.0</span>
-          <span class="rating-count">Berdasarkan 1,280+ Ulasan Pelanggan di Malaysia</span>
-          <span class="review-verified light-theme">✓ Pembelian Disahkan</span>
+          <span class="rating-count">Berdasarkan 850+ Maklum Balas Usahawan Seluruh Malaysia</span>
+          <span class="review-verified">✓ 100% Usahawan Bertempahan</span>
         </div>
 
         <div class="gold-divider" aria-hidden="true"><span></span>
@@ -466,150 +988,171 @@
         </div>
       </div>
 
-      <!-- Review Grid -->
-      <div class="reviews-grid-main text-left" style="text-align: left;">
+      <div class="reviews-grid">
 
-        <!-- Review Card 1 -->
-        <div class="review-card-main reveal d-1">
+        <div class="review-card reveal d-1">
           <div>
             <div class="review-card-top">
-              <div class="review-avatar">DA</div>
+              <div class="review-avatar">ZH</div>
               <div class="review-author-info">
-                <h4>Dato' Sri Azman</h4>
-                <div class="review-role">Kuala Lumpur</div>
+                <h4>Pn. Hjh. Zaleha Othman</h4>
+                <div class="review-role">Shah Alam, Selangor · Suri Rumah</div>
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Kurma lembut, isi tebal dan tidak terlalu manis. Rasa sangat premium."</h4>
-            <p class="review-body">
-              "Sejak amalkan 7 biji kurma Ajwa setiap pagi mengikut hadis sunnah, rasa badan lebih bertenaga sepanjang
-              hari. Kurma ini sangat bersih, isi padat dan tidak berserabut. Pek ziplock memudahkan saya simpan di
-              pejabat."
-            </p>
-          </div>
-          <div class="review-footer-badge">
-            <span class="review-metric-pill">Pembelian: 5 Pek</span>
-            <span class="review-verified light-theme">✓ Verified Buyer</span>
-          </div>
-        </div>
-
-        <!-- Review Card 2 -->
-        <div class="review-card-main reveal d-2">
-          <div>
-            <div class="review-card-top">
-              <div class="review-avatar">RH</div>
-              <div class="review-author-info">
-                <h4>Pn. Rohana Hashim</h4>
-                <div class="review-role">Shah Alam, Selangor</div>
-              </div>
-            </div>
-            <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Packaging matte black &amp; gold sangat eksklusif, sesuai buat buah tangan!"
+            <h4 class="review-headline">"Alhamdulillah 20 paket pertama habis dalam 3 hari je di surau &amp; WhatsApp!"
             </h4>
             <p class="review-body">
-              "Saya beli untuk dihadiahkan kepada ibu bapa sempena Ramadan. Bungkusan sangat elegan macam produk import
-              mewah. Mak ayah puji rasa kurma lembut dan basah elok, tak kering liat macam kurma biasa."
+              "Mulanya risau takut susah nak jual. Bila paket sampai, kualiti packaging matte black gold memang nampak
+              mewah. Saya bawa sampel ke surau dan share dalam grup WhatsApp taman, terus habis 20 paket!"
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Pek 200g Eksklusif</span>
-            <span class="review-verified light-theme">✓ Verified Buyer</span>
+            <span class="review-metric-pill">Pakej 20 Paket</span>
+            <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
 
-        <!-- Review Card 3 -->
-        <div class="review-card-main reveal d-3">
+        <div class="review-card reveal d-2">
           <div>
             <div class="review-card-top">
-              <div class="review-avatar">DR</div>
+              <div class="review-avatar">FA</div>
               <div class="review-author-info">
-                <h4>Dr. Ridzwan Salleh</h4>
-                <div class="review-role">Petaling Jaya, Selangor</div>
+                <h4>En. Faizal Ariffin</h4>
+                <div class="review-role">Bangi, Selangor · Kakitangan Swasta</div>
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Kurma Ajwa Madinah asli. Tekstur segar, tidak berdebu &amp; tiada bau hapak."
+            <h4 class="review-headline">"Bahan marketing poster &amp; video sangat membantu, tak pening nak design!"
             </h4>
             <p class="review-body">
-              "Sebagai pengguna yang menitikberatkan kualiti pemakanan, saya sangat berpuas hati. Jelas sekali kurma ini
-              diimport terus dan disimpan dengan standard kawalan suhu rapi oleh Irfan Khairi Sdn Bhd."
+              "Kelebihan paling besar pakej ni ialah bahan marketing percuma. Saya cuma download video dan poster, lepas
+              tu post kat Status WhatsApp dan Facebook. Kawan-kawan ofis terus PM nak tempah!"
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Jaminan: 100% Asli Madinah</span>
-            <span class="review-verified light-theme">✓ Verified Buyer</span>
+            <span class="review-metric-pill">Repeat Order: 2 Kali</span>
+            <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
 
-        <!-- Review Card 4 -->
-        <div class="review-card-main reveal d-1">
+        <div class="review-card reveal d-3">
           <div>
             <div class="review-card-top">
-              <div class="review-avatar">US</div>
+              <div class="review-avatar">MW</div>
               <div class="review-author-info">
-                <h4>Ustazah Salwa</h4>
-                <div class="review-role">Nilai, Negeri Sembilan</div>
+                <h4>Cikgu Maryam Wahida</h4>
+                <div class="review-role">Kota Bharu, Kelantan · Pendidik</div>
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Alhamdulillah anak-anak suka makan, pengganti snek manis yang sihat."</h4>
+            <h4 class="review-headline">"Pelanggan puji kurma lembut, manis semula jadi dan paket ziplock senang bawa."
+            </h4>
             <p class="review-body">
-              "Anak-anak saya sebelum ini susah nak makan kurma, tapi kurma Ajwa of Madinah ni lembut dan rasa karamel
-              semula jadi. Satu pek 200g sekejap je habis."
+              "Bukan saja berbaloi, tapi kualiti kurma Ajwa ni memang gred premium. Buahnya bersih, isi tebal dan tak
+              berserabut. Ramai cikgu sekolah saya minta repeat order!"
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Pilihan Keluarga Sihat</span>
-            <span class="review-verified light-theme">✓ Verified Buyer</span>
+            <span class="review-metric-pill">Kualiti: Gred Premium Madinah</span>
+            <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
 
-        <!-- Review Card 5 -->
-        <div class="review-card-main reveal d-2">
+        <div class="review-card reveal d-1">
           <div>
             <div class="review-card-top">
-              <div class="review-avatar">KA</div>
+              <div class="review-avatar">UH</div>
               <div class="review-author-info">
-                <h4>En. Khairul Annuar</h4>
-                <div class="review-role">Johor Bahru</div>
+                <h4>Ustaz Hafizuddin</h4>
+                <div class="review-role">Petaling Jaya · Tenaga Pengajar</div>
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Penghantaran pantas, packaging sampai tanpa sebarang kerosakan!"</h4>
+            <h4 class="review-headline">"Berniaga kurma sunnah dengan hadis sahih, jualan jadi lancar dan berkat."</h4>
             <p class="review-body">
-              "Order hari Isnin, petang Rabu dah sampai di JB. Kotak dibalut rapi dengan pelekat fragile. Servis
-              khidmat pelanggan sangat responsif. Saya rekomen untuk sesiapa yang mencari kurma Ajwa asli."
+              "Bila kita ceritakan khasiat sunnah memakan 7 biji kurma setiap pagi, jemaah dan rakan-rakan sangat
+              menghargai. Pakej modal usahawan ini sangat adil dan membantu."
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Penghantaran: Pantas ke Seluruh M'sia</span>
-            <span class="review-verified light-theme">✓ Verified Buyer</span>
+            <span class="review-metric-pill">Total: 60 Paket Terjual</span>
+            <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
 
-        <!-- Review Card 6 -->
-        <div class="review-card-main reveal d-3">
+        <div class="review-card reveal d-2">
           <div>
             <div class="review-card-top">
-              <div class="review-avatar">HM</div>
+              <div class="review-avatar">NS</div>
               <div class="review-author-info">
-                <h4>Hjh. Mariam</h4>
-                <div class="review-role">Alor Setar, Kedah</div>
+                <h4>Pn. Noraini Samad</h4>
+                <div class="review-role">Ayer Keroh, Melaka · Usahawan Sambilan</div>
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <h4 class="review-headline">"Rasa sama seperti kurma yang dibeli di pasar Madinah waktu umrah."</h4>
+            <h4 class="review-headline">"Penghantaran pantas, kotak bungkusan tebal dan paket sampai kemas sempurna!"
+            </h4>
             <p class="review-body">
-              "Rindu suasana Madinah Al-Munawwarah. Bila makan kurma ini, rasa macam beli terus dari ladang kurma
-              Madinah. Lembut, wangi dan berkat. Terima kasih Irfan Khairi Sdn Bhd."
+              "Order hari Selasa, hari Khamis dah sampai depan pintu rumah. Kotak bungkusan sangat kemas dengan bubble
+              wrap tebal. Servis team Irfan Khairi Sdn Bhd memang terbaik!"
             </p>
           </div>
           <div class="review-footer-badge">
-            <span class="review-metric-pill">Kualiti: Asli Madinah Al-Munawwarah</span>
-            <span class="review-verified light-theme">✓ Verified Buyer</span>
+            <span class="review-metric-pill">Penghantaran: Pantas &amp; Selamat</span>
+            <span class="review-verified">✓ Verified Usahawan</span>
           </div>
         </div>
 
+        <div class="review-card reveal d-3">
+          <div>
+            <div class="review-card-top">
+              <div class="review-avatar">SN</div>
+              <div class="review-author-info">
+                <h4>En. Shahrul Nizam</h4>
+                <div class="review-role">Kuantan, Pahang · Usahawan Belia</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <h4 class="review-headline">"Bermula 10 paket dulu, terus naikkan ke 20 paket bila dah confident jual!"</h4>
+            <p class="review-body">
+              "Bagi pemuda macam saya yang nak cari side income halal, ada pilihan 10 paket ni sangat membantu. Lepas
+              habis dan pusing modal, terus ambil 20 paket. Margin untung memang padu!"
+            </p>
+          </div>
+          <div class="review-footer-badge">
+            <span class="review-metric-pill">Pakej 10 → 20 Paket</span>
+            <span class="review-verified">✓ Verified Usahawan</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Stats Bar -->
+      <div class="reviews-trust-bar reveal d-2">
+        <div class="trust-item">
+          <div class="trust-item-val">4.9 / 5.0</div>
+          <div class="trust-item-lbl">Kepuasan Usahawan</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-val">2 Pakej</div>
+          <div class="trust-item-lbl">10 Paket &amp; 20 Paket Tersedia</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-val">100% Percuma</div>
+          <div class="trust-item-lbl">Bahan Marketing Disediakan</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-val">Asli Madinah</div>
+          <div class="trust-item-lbl">Diimport Irfan Khairi Sdn Bhd</div>
+        </div>
+      </div>
+
+      <div class="text-center reveal d-3" style="margin-top: 45px;">
+        <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold hero-btn-glow"
+          style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;">
+          <span>💼 Dapatkan Preorder Usahawan →</span>
+        </a>
       </div>
 
     </div>
@@ -619,16 +1162,14 @@
   <!-- ═══════════════════════════════════════════════════════════
      FAQ — SOALAN LAZIM
      ═══════════════════════════════════════════════════════════ -->
-  <section id="soalan" aria-label="Soalan Lazim Mengenai Pakej Usahawan">
+  <section id="soalan" class="section-faq" style="padding: 95px 0;" aria-label="Soalan Lazim Pakej Usahawan">
     <div class="container">
 
-      <div class="section-head text-center">
-        <span class="section-tag reveal">Ada Pertanyaan?</span>
-        <h2 class="section-title reveal d-1">
-          Soalan <span class="gold-shimmer">Lazim (FAQ)</span>
-        </h2>
-        <div class="gold-divider reveal d-2">
-          <span></span>
+      <div class="section-head text-center reveal d-1">
+        <div class="section-tag">Bantuan &amp; Kepastian</div>
+        <h2 class="section-title">Soalan Lazim (FAQ)</h2>
+        <p class="section-desc">Jawapan kepada pertanyaan yang paling kerap diajukan oleh calon usahawan kami:</p>
+        <div class="gold-divider" aria-hidden="true"><span></span>
           <div class="gold-diamond"></div><span></span>
         </div>
       </div>
@@ -637,81 +1178,85 @@
 
         <div class="faq-item active">
           <button class="faq-question" aria-expanded="true">
-            <span>Apakah yang termasuk dalam Pakej Usahawan?</span>
-            <span class="faq-toggle">+</span>
+            <span>Apakah perbezaan antara Pakej 10 Paket dan Pakej 20 Paket?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Setiap Pakej Usahawan termasuk pek ziplock Kurma Ajwa 200g (10 atau 20 pek mengikut pilihan pakej),
-              poster dan video marketing percuma, serta sokongan daripada pasukan Irfan Khairi Sdn Bhd.</p>
+            <p>Pakej 10 Paket sesuai untuk pemula yang ingin mencuba dahulu dengan modal yang lebih rendah. Pakej 20
+              Paket
+              memberikan lebih banyak stok untuk dijual dan lazimnya memberikan margin yang lebih baik per paket.
+              Kedua-dua
+              pakej termasuk bahan marketing percuma yang sama.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Berapakah berat satu pek Ajwa of Madinah?</span>
-            <span class="faq-toggle">+</span>
+            <span>Berapa modal minimum untuk bermula sebagai usahawan?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Setiap bungkusan pek ziplock mengandungi <strong>200g</strong> Kurma Ajwa gred premium terpilih dari
-              Madinah Al-Munawwarah.</p>
+            <p>Modal minimum bermula dengan <strong>Pakej 10 Paket</strong>. Anda tidak perlu mengambil stok
+              beratus-ratus
+              paket untuk memulakan perniagaan Ajwa of Madinah.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Dari manakah kurma ini berasal?</span>
-            <span class="faq-toggle">+</span>
+            <span>Bagaimana saya akan menerima poster dan video marketing PERCUMA?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Kurma Ajwa of Madinah diimport terus dari <strong>Madinah Al-Munawwarah</strong>, Arab Saudi — kawasan
-              asal kurma Ajwa yang telah dikenali sejak zaman Rasulullah SAW. Diimport secara sah dan eksklusif oleh
-              Irfan Khairi Sdn Bhd.</p>
+            <p>Sebaik sahaja tempahan pakej anda disahkan, pautan muat turun folder Google Drive dan saluran sokongan
+              akan dihantar terus ke emel dan WhatsApp anda. Semua bahan boleh dimuat turun bila-bila masa.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Bolehkah saya bermula dengan Pakej 10 Pek dahulu?</span>
-            <span class="faq-toggle">+</span>
+            <span>Berapa lama jangka hayat Kurma Ajwa ini?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Ya, anda boleh bermula dengan <strong>Pakej Usahawan 10 Pek</strong> sebagai permulaan. Apabila bisnes
-              semakin berkembang, anda boleh tingkatkan ke Pakej 20 Pek untuk margin yang lebih baik.</p>
+            <p>Kurma Ajwa of Madinah dibungkus dalam paket zipper kedap udara gred makanan dan mempunyai jangka hayat
+              sehingga <strong>12 bulan</strong> apabila disimpan di tempat sejuk atau peti sejuk.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Bagaimanakah cara membuat tempahan pakej?</span>
-            <span class="faq-toggle">+</span>
+            <span>Bagaimana proses penghantaran stok kepada saya?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Tempahan dibuat secara dalam talian melalui gerbang pembayaran rasmi <strong>OnPay</strong> yang selamat.
-              Menerima FPX (Online Banking), Kad Kredit &amp; Kad Debit. Klik butang "Dapatkan Pakej Ini" untuk ke
-              halaman tempahan.</p>
+            <p>Stok dibungkus kemas dalam kotak perlindungan dan dihantar menggunakan syarikat kurier pantas ke seluruh
+              Semenanjung Malaysia, Sabah, dan Sarawak. Pilihan <em>self-pickup</em> di pejabat Irfan Khairi Sdn Bhd di
+              The Strand, Kota Damansara juga boleh diaturkan.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Adakah kandungan kurma 100% tulen tanpa campuran?</span>
-            <span class="faq-toggle">+</span>
+            <span>Adakah produk ini dijamin asli dari Madinah?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Ya. Produk ini mengandungi <strong>100% Kurma Ajwa</strong> semata-mata. Tiada bahan pengawet, tiada
-              campuran, tiada perisa tambahan. Maklumat penuh tertera pada setiap bungkusan.</p>
+            <p>Ya, 100% dijamin asli. Kurma Ajwa of Madinah diimport secara rasmi oleh <strong>Irfan Khairi Sdn
+                Bhd</strong> terus dari pembekal dan ladang kurma terpilih di Madinah Al-Munawwarah dengan kawalan
+              kualiti yang ketat.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Bagaimanakah cara menyimpan kurma dengan betul?</span>
-            <span class="faq-toggle">+</span>
+            <span>Bagaimana cara membuat pembayaran?</span>
+            <span class="faq-toggle" aria-hidden="true">+</span>
           </button>
           <div class="faq-answer">
-            <p>Disarankan untuk disimpan di dalam <strong>peti sejuk</strong> bagi mengekalkan kelembapan, kelembutan
-              isi, dan kesegaran rasa manis semula jadi buah. Pastikan zip ditutup dengan rapat selepas setiap
-              penggunaan.</p>
+            <p>Tempahan dibuat melalui gerbang pembayaran rasmi <strong>OnPay</strong> yang selamat. Menerima FPX
+              (Online Banking), Kad Kredit dan Kad Debit. Klik mana-mana butang "Dapatkan Preorder Ini" untuk ke halaman
+              tempahan.</p>
           </div>
         </div>
 
@@ -722,87 +1267,82 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════
-     FINAL CTA SECTION
+     FINAL CTA — CLOSING SECTION
      ═══════════════════════════════════════════════════════════ -->
-  <section id="order" aria-label="Dapatkan Pakej Usahawan Ajwa of Madinah Sekarang">
-    <div class="order-halo" aria-hidden="true"></div>
+  <section id="tempah" class="section-final-cta" aria-label="Dapatkan Preorder Usahawan Ajwa of Madinah">
+    <div class="container">
 
-    <div class="container order-box-inner text-center">
+      <div class="final-cta-box reveal d-1">
+        <span class="final-cta-badge">Pakej Usahawan Ajwa of Madinah</span>
 
-      <span class="section-tag dark reveal">Tempahan Selamat &amp; Rasmi</span>
+        <h2 class="final-cta-headline">
+          Sertai Pakej Usahawan<br />
+          <span class="gold-shimmer">Ajwa of Madinah Hari Ini</span>
+        </h2>
 
-      <h2 class="order-headline reveal d-1">
-        Sertai Pakej Usahawan<br />
-        <span class="gold-shimmer">Ajwa of Madinah hari ini.</span>
-      </h2>
+        <p class="final-cta-desc">
+          Pilih <strong>Pakej 10 Paket</strong> atau <strong>Pakej 20 Paket</strong> mengikut kemampuan anda.
+          Setiap pakej termasuk bahan pemasaran percuma yang membolehkan anda mula berniaga dengan segera.
+        </p>
 
-      <p class="order-subtext reveal d-2">
-        Dua pilihan pakej untuk bermula mengikut kemampuan anda. Klik butang di bawah untuk ke halaman tempahan
-        rasmi melalui OnPay yang selamat.
-      </p>
-
-      <!-- Trust Pills -->
-      <div class="reveal d-3"
-        style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px;">
-        <div class="trust-pill">
-          <span class="trust-icon">🔒</span>
-          <span>Pembayaran Selamat</span>
+        <!-- Bonus Reminder -->
+        <div
+          style="background: rgba(212,175,55,.08); border: 1px dashed var(--gold-500, #b8952f); border-radius: 16px; padding: 18px 24px; margin-bottom: 34px; display: inline-block;">
+          <span style="color: var(--gold-300, #f5e4b3); font-weight: 700; font-size: 1.05rem;">
+            🎁 BONUS USAHAWAN TERMASUK:
+          </span>
+          <div style="display: flex; gap: 20px; justify-content: center; margin-top: 8px; flex-wrap: wrap;">
+            <span style="color: #FFF;">🎨 Poster Marketing PERCUMA</span>
+            <span style="color: var(--gold-400, #c9a84c);">•</span>
+            <span style="color: #FFF;">🎬 Video Marketing PERCUMA</span>
+            <span style="color: var(--gold-400, #c9a84c);">•</span>
+            <span style="color: #FFF;">📱 Skrip WhatsApp Siap Sedia</span>
+          </div>
         </div>
-        <div class="trust-pill">
-          <span class="trust-icon">🚚</span>
-          <span>Penghantaran Pantas</span>
+
+        <!-- Buttons -->
+        <div class="final-cta-buttons">
+          <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold btn-large-cta hero-btn-glow"
+            id="final-cta-btn">
+            <span>💼 DAPATKAN PAKEJ USAHAWAN →</span>
+          </a>
         </div>
-        <div class="trust-pill">
-          <span class="trust-icon">💯</span>
-          <span>Kualiti Dijamin</span>
+
+        <!-- Trust row -->
+        <div class="final-guarantee-row">
+          <div class="guarantee-item">
+            <span>🏛️</span>
+            <span>Diimport Rasmi oleh Irfan Khairi Sdn Bhd</span>
+          </div>
+          <div class="guarantee-item">
+            <span>🔒</span>
+            <span>Bayaran Selamat OnPay / FPX</span>
+          </div>
+          <div class="guarantee-item">
+            <span>🚚</span>
+            <span>Penghantaran Pantas Seluruh Malaysia</span>
+          </div>
         </div>
+
       </div>
-
-      <!-- Product Image -->
-      <div class="order-visual-wrap reveal d-3">
-        <img src="assets/sample-3-removebg-preview.png" alt="Kurma Ajwa of Madinah Pek 200g" class="order-img"
-          loading="lazy" />
-      </div>
-
-      <div class="order-action-block reveal d-4">
-        <a href="#pakej-usahawan"
-          class="btn-gold btn-large-cta hero-btn-glow" id="order-pakej-btn"
-          aria-label="Lihat pilihan Pakej Usahawan Ajwa of Madinah">
-          <span class="btn-icon">💼</span>
-          <span>Pilih Pakej Usahawan Anda</span>
-          <span class="btn-arrow">→</span>
-        </a>
-
-        <div class="order-guarantees">
-          <span>🔒 Pembayaran Selamat OnPay</span>
-          <span>•</span>
-          <span>🚚 Penghantaran Pantas</span>
-          <span>•</span>
-          <span>💯 Jaminan Kualiti Asli</span>
-        </div>
-      </div>
-
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════════════════════════
-     STICKY BOTTOM QUICK-BUY BAR
+     STICKY BOTTOM BAR
      ═══════════════════════════════════════════════════════════ -->
-  <div id="sticky-bottom-bar" class="sticky-bar" aria-hidden="true">
-    <div class="container sticky-bar-inner">
-      <div class="sticky-product-info">
-        <img src="assets/sample-3-removebg-preview.png" alt="Ajwa 200g" class="sticky-thumb" />
-        <div>
-          <div class="sticky-title">Pakej Usahawan Ajwa of Madinah</div>
-          <div class="sticky-desc">10 Pek & 20 Pek Tersedia</div>
-        </div>
-      </div>
-      <a href="#pakej-usahawan"
-        class="btn-gold sticky-btn" id="sticky-pakej-btn">
-        💼 Dapatkan Pakej
-      </a>
+  <div id="reseller-sticky-bar" class="reseller-sticky-bar" role="region"
+    aria-label="Bar Tempahan Pantas Pakej Usahawan">
+    <div class="reseller-sticky-info">
+      <div class="sticky-pack-badge">Pakej Usahawan Ajwa of Madinah</div>
+      <div class="sticky-pack-sub">10 Paket &amp; 20 Paket Tersedia · Poster &amp; Video Marketing PERCUMA</div>
     </div>
+    <a href="#" data-onpay target="_blank" rel="noopener noreferrer" class="btn-gold"
+      style="padding: 10px 22px; font-size: 0.92rem; white-space: nowrap;">
+      <span>💼 Dapatkan Preorder</span>
+      <span>→</span>
+    </a>
   </div>
 
 
@@ -814,72 +1354,72 @@
 
       <div class="footer-top-grid">
 
-        <!-- Column 1: Brand (Ajwa logo sahaja, IKSB dibuang) -->
+        <!-- Column 1: Brand — Ajwa logo sahaja -->
         <div class="footer-brand-col">
           <div class="footer-logos">
             <img src="assets/logo-ajwa.jpeg" alt="Ajwa of Madinah" class="footer-logo-ajwa" />
           </div>
           <p class="footer-about-text">
-            Kurma Ajwa premium berkualiti tinggi dari Madinah Al-Munawwarah, diimport terus oleh <strong>Irfan Khairi
-              Sdn Bhd</strong> untuk membawakan keberkatan Sunnah ke meja anda.
+            Program Usahawan <strong>Ajwa of Madinah</strong> dibawakan secara eksklusif oleh <strong>Irfan Khairi
+              Sdn Bhd</strong> untuk membantu rakyat Malaysia membina punca pendapatan sampingan yang halal dan berkat.
           </p>
         </div>
 
-        <!-- Column 2: Navigation -->
+        <!-- Column 2: Hubungi -->
         <div class="footer-nav-col">
-          <h4>Navigasi</h4>
-          <ul class="footer-list">
-            <li><span class="fl-icon">›</span><a href="#pengenalan">Pakej Usahawan</a></li>
-            <li><span class="fl-icon">›</span><a href="#keistimewaan">Keistimewaan</a></li>
-            <li><span class="fl-icon">›</span><a href="#testimoni">Ulasan</a></li>
-            <li><span class="fl-icon">›</span><a href="#soalan">FAQ</a></li>
-            <li><span class="fl-icon">›</span><a href="#pakej-usahawan"
-                style="color: var(--gold-400); font-weight: 700;">💼 Pakej Usahawan</a></li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Contact -->
-        <div class="footer-nav-col">
-          <h4>Hubungi Kami</h4>
+          <h4>Hubungi Khidmat Pelanggan</h4>
           <ul class="footer-list">
             <li>
               <span class="fl-icon">✉</span>
               <a href="mailto:info@ajwaofmadinah.com">info@ajwaofmadinah.com</a>
             </li>
             <li>
-              <span class="fl-icon">🌐</span>
-              <a href="https://www.AjwaOfMadinah.com" target="_blank"
-                rel="noopener noreferrer">www.AjwaOfMadinah.com</a>
+              <span class="fl-icon">💬</span>
+              <a href="https://wa.me/601116238805?text=Salam%2C%20pertanyaan%20mengenai%20Pakej%20Usahawan%20Ajwa%20of%20Madinah"
+                target="_blank" rel="noopener noreferrer">WhatsApp Rasmi Usahawan</a>
             </li>
             <li>
               <span class="fl-icon">📍</span>
               <span>Irfan Khairi Sdn Bhd, 48-3, Jalan PJU 5/21, The Strand, Kota Damansara, 47810 Petaling Jaya.</span>
             </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Pautan -->
+        <div class="footer-nav-col">
+          <h4>Pautan Berkaitan</h4>
+          <ul class="footer-list">
             <li>
-              <span class="fl-icon">📦</span>
-              <span>Berat Bersih: 200g setiap pek</span>
+              <span class="fl-icon">🏠</span>
+              <a href="index.html">Halaman Utama Ajwa of Madinah</a>
             </li>
             <li>
-              <span class="fl-icon">❄️</span>
-              <span>Simpan di dalam peti sejuk</span>
+              <span class="fl-icon">📦</span>
+              <a href="#pakej-harga">Pakej 10 Paket &amp; 20 Paket</a>
+            </li>
+            <li>
+              <span class="fl-icon">🛒</span>
+              <a href="#" data-onpay target="_blank" rel="noopener noreferrer">Borang Tempahan OnPay</a>
+            </li>
+            <li>
+              <span class="fl-icon">📚</span>
+              <a href="https://www.hijrahperniagaan.com" target="_blank" rel="noopener noreferrer">Hijrah Perniagaan</a>
             </li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Footer Bottom -->
       <div class="footer-bottom-bar">
         <p>© 2026 Irfan Khairi Sdn Bhd. Hak Cipta Terpelihara.</p>
-        <p>Diimport oleh Irfan Khairi Sdn Bhd · 48-3, Jalan PJU 5/21, The Strand, Kota Damansara, 47810 Petaling Jaya
-        </p>
+        <p>Pakej Usahawan Ajwa of Madinah · 48-3, Jalan PJU 5/21, The Strand, Kota Damansara, 47810 Petaling Jaya</p>
       </div>
 
     </div>
   </footer>
 
-  <!-- Config dimuatkan dalam <head>. Main.js dimuatkan terakhir. -->
-  <script src="js/main.js" defer></script>
+  <!-- Scripts -->
+  <script src="js/reseller.js?v=40" defer></script>
 </body>
 
 </html>
